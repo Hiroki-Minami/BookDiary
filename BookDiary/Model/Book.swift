@@ -18,5 +18,3 @@ struct Book {
   var genres: Genres?
   var pages: Int?
 }
-
-

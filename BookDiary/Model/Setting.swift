@@ -8,7 +8,6 @@
 import Foundation
 
 
-/// <#Description#>
 struct Setting {
-  static var browse = Browses.Google
+  static var browser = Browsers.Google
 }
