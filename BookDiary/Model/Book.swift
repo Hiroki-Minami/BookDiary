@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Books {
+struct Book {
   let id = UUID()
   var title: String
   var img: String
