@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6066F59A293D4D15005F83B2 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6066F599293D4D15005F83B2 /* Book.swift */; };
+		6066F59A293D4D15005F83B2 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6066F599293D4D15005F83B2 /* Post.swift */; };
 		6066F59C293D5256005F83B2 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6066F59B293D5256005F83B2 /* Enums.swift */; };
-		6066F59E293D61D5005F83B2 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6066F59D293D61D5005F83B2 /* Setting.swift */; };
-		6066F5A0293D76E0005F83B2 /* Reader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6066F59F293D76E0005F83B2 /* Reader.swift */; };
+		6066F59E293D61D5005F83B2 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6066F59D293D61D5005F83B2 /* UserInfo.swift */; };
+		6066F5A0293D76E0005F83B2 /* Poster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6066F59F293D76E0005F83B2 /* Poster.swift */; };
 		606D7C1C293FE18300F4E558 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 606D7C1B293FE18300F4E558 /* .gitignore */; };
 		94770665293AC9D700CFA877 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94770664293AC9D700CFA877 /* AppDelegate.swift */; };
 		94770667293AC9D700CFA877 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94770666293AC9D700CFA877 /* SceneDelegate.swift */; };
@@ -21,10 +21,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		6066F599293D4D15005F83B2 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		6066F599293D4D15005F83B2 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		6066F59B293D5256005F83B2 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
-		6066F59D293D61D5005F83B2 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
-		6066F59F293D76E0005F83B2 /* Reader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reader.swift; sourceTree = "<group>"; };
+		6066F59D293D61D5005F83B2 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		6066F59F293D76E0005F83B2 /* Poster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Poster.swift; sourceTree = "<group>"; };
 		606D7C1B293FE18300F4E558 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		94770661293AC9D700CFA877 /* BookDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94770664293AC9D700CFA877 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -50,10 +50,10 @@
 		60F8D49F293BBD2B00CCADF9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				6066F599293D4D15005F83B2 /* Book.swift */,
+				6066F599293D4D15005F83B2 /* Post.swift */,
 				6066F59B293D5256005F83B2 /* Enums.swift */,
-				6066F59D293D61D5005F83B2 /* Setting.swift */,
-				6066F59F293D76E0005F83B2 /* Reader.swift */,
+				6066F59D293D61D5005F83B2 /* UserInfo.swift */,
+				6066F59F293D76E0005F83B2 /* Poster.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -162,11 +162,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6066F59E293D61D5005F83B2 /* Setting.swift in Sources */,
+				6066F59E293D61D5005F83B2 /* UserInfo.swift in Sources */,
 				6066F59C293D5256005F83B2 /* Enums.swift in Sources */,
-				6066F5A0293D76E0005F83B2 /* Reader.swift in Sources */,
+				6066F5A0293D76E0005F83B2 /* Poster.swift in Sources */,
 				94770669293AC9D700CFA877 /* ViewController.swift in Sources */,
-				6066F59A293D4D15005F83B2 /* Book.swift in Sources */,
+				6066F59A293D4D15005F83B2 /* Post.swift in Sources */,
 				94770665293AC9D700CFA877 /* AppDelegate.swift in Sources */,
 				94770667293AC9D700CFA877 /* SceneDelegate.swift in Sources */,
 			);

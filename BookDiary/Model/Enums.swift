@@ -8,14 +8,14 @@
 import Foundation
 
 
-/// Language of books
+/// Language of book
 /// Example:
 ///   if you type Language.English, then will get "English" of String,
 public enum Language: String, CaseIterable, Codable {
   case English, Mandarin, Japanese, Korean
 }
 
-///  Genre of books
+///  Genre of book
 /// Example:
 ///   if you type Genres.Art, then will get "Art" of String,
 public enum Genres: String, CaseIterable, Codable {
