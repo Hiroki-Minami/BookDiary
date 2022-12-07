@@ -1,0 +1,104 @@
+//
+//  SearchFilterViewController.swift
+//  BookDiary
+//
+//  Created by Hiroki Minami on 2022-12-06.
+//
+
+import UIKit
+
+class SearchFilterViewController: UIViewController {
+  
+  @IBOutlet var genreCollapseButton: UIButton!
+  @IBOutlet var genreVerticalStackView: UIStackView!
+  var genreCollapseVerticalStackView: UIStackView?
+  var genreCheckBoxs: [UIButton] = []
+  var genreChecked: [Genre : Bool] = [:]
+  var doneChecked] [completion: Bool] = [:]
+  
+  
+  @IBOutlet var doneCollapseButton: UIButton!
+  @IBOutlet var doneCollapseVerticalStackView: UIStackView!
+  @IBOutlet var inCompleteCheckButton: UIButton!
+  
+  
+  @IBOutlet var rateCollapseButton: UIButton!
+  @IBOutlet var rateSlider: UISlider!
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    
+    // TODO: make vertical view with genres and add them into view
+    let genreStackView = UIStackView()
+    genreStackView.translatesAutoresizingMaskIntoConstraints = false
+    genreStackView.axis = .vertical
+    genreStackView.alignment = .fill
+    genreStackView.distribution = .fillProportionally
+    
+    for genre in Genres {
+      
+      let checkBox = UIButton()
+      checkBox.setImage(UIImage(systemName: "square"), for: .normal)
+      checkBox.setImage(UIImage(systemName: "checkmark.square"), for: .selected)
+      checkBox.addTarget(self, action: #selector(genreCheckBoxTapped(_:)), for: .touchUpInside)
+      genreCheckBoxs.append(checkBox)
+      
+      let genreLabel = UILabel()
+      genreLabel.translatesAutoresizingMaskIntoConstraints = false
+      genreLabel.text = genre
+      
+      let horizontalStackView = UIStackView(arrangedSubviews: [checkBox, genreLabel])
+      horizontalStackView.translatesAutoresizingMaskIntoConstraints = false
+      horizontalStackView.axis = .horizontal
+      horizontalStackView.alignment = .fill
+      horizontalStackView.distribution = .fillEqually
+      
+      genreStackView.addArrangedSubview(horizontalStackView)
+    }
+    
+    genreVerticalStackView.addArrangedSubview(genreStackView)
+  }
+  
+  @objc func genreCheckBoxTapped(_ sender: UIButton) {
+    for (index, button) in genreCheckBoxs.enumerated() {
+      if button === sender {
+        genreChecked[Genre[index]].toggle()
+      }
+    }
+  }
+  
+  @IBAction func genreCollapseButtonTapped(_ sender: UIButton) {
+    sender.isSelected.toggle()
+    // TODO: Show vertical stack view
+    genreCollapseVerticalStackView?.isHidden.toggle()
+    
+  }
+  
+  @IBAction func doneCollapseButtonTapped(_ sender: UIButton) {
+    sender.isSelected.toggle()
+    doneCollapseVerticalStackView.isHidden.toggle()
+  }
+  
+  @IBAction func rateCollapseButtonTapped(_ sender: UIButton) {
+    sender.isSelected.toggle()
+    rateSlider.isHidden.toggle()
+  }
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    guard segue.identifier == "saveFilter" else { return }
+    
+    // TODO: save filter settings
+//    for (genre, isShown) in genreChecked {
+//
+//    }
+    // TODO: save filter rate
+    // TODO: save filter done
+    
+    Setting.filters.save(genreChecked)
+  }
+  
+  @IBAction func cancelButtonTapped(_ sender: UIBarButtonItem) {
+    dismiss(animated: true)
+  }
+  
+}
