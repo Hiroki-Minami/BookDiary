@@ -20,6 +20,8 @@ struct Post: Equatable, Codable {
   var postedDate: Date
   var poster: Poster
   
+  private static let archiveURL = FileManager.pathToDoucumentsDirectory(with: "posts")
+  
   init(title: String, img: String? = nil, isComplete: Bool = false, author: String, rates: Float? = nil, language: Language, genres: Genres? = nil, review: String? = nil, postedDate: Date, poster: Poster) {
     self.id = UUID()
     self.title = title
@@ -33,9 +35,6 @@ struct Post: Equatable, Codable {
     self.postedDate = postedDate
     self.poster = poster
   }
-  
-  static let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-  static let archiveURL = documentsDirectory.appendingPathComponent("posts").appendingPathExtension("plist")
   
   static func == (lhs: Post, rhs: Post) -> Bool {
     return lhs.id == rhs.id
@@ -60,10 +59,10 @@ struct Post: Equatable, Codable {
   /// static Posts data
   /// - Returns: array of Reader
   static func loadSamplePosts() -> [Post] {
-    let poster1 = Poster(firstName: "poster1", lastName: "Liu", nickName: "Quien", email: "reader1@gmail.com")
-    let poster2 = Poster(firstName: "poster2", lastName: "Chen", email: "reader2@gmail.com")
-    let poster3 = Poster(firstName: "poster3", lastName: "Liu", nickName: "Henry", email: "reader3@gmail.com")
-    let poster4 = Poster(firstName: "poster4", lastName: "Chen", email: "reader4@gmail.com")
+    let poster1 = Poster(firstName: "poster1", nickName: "Quien")
+    let poster2 = Poster(firstName: "poster2")
+    let poster3 = Poster(firstName: "poster3", nickName: "Henry")
+    let poster4 = Poster(firstName: "poster4")
     
     let post1 = Post(title: "book1", author: "author1", language: Language.English, genres: Genres.Fantasy, review: "It's an amazing book.", postedDate: Date(), poster: poster1)
     let post2 = Post(title: "book2", author: "author2", language: Language.Mandarin, genres: Genres.Art, review: "It's an amazing book.", postedDate: Date(), poster: poster1)

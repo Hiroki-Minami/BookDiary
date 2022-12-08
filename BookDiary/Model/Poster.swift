@@ -7,21 +7,14 @@
 
 import Foundation
 
-struct Poster: Equatable, Codable {
+
+struct Poster: Codable {
   var firstName: String
-  var lastName: String
   var nickName: String?
-  var email: String
   
-  init(firstName: String, lastName: String, nickName: String? = nil, email: String) {
+  init(firstName: String, nickName: String? = nil) {
     self.firstName = firstName
-    self.lastName = lastName
     self.nickName = nickName
-    self.email = email
-  }
-  
-  static func == (lhs: Poster, rhs: Poster) -> Bool {
-    return lhs.email == rhs.email
   }
   
 }
