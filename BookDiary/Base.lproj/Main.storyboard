@@ -273,14 +273,14 @@
                             <tableViewSection id="um3-QP-cMV">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="vfA-rt-SfZ">
-                                        <rect key="frame" x="0.0" y="50" width="393" height="27.666666030883789"/>
+                                        <rect key="frame" x="0.0" y="50" width="393" height="28"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vfA-rt-SfZ" id="PeV-ku-pqc">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="27.666666030883789"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="28"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NV4-S9-WQ0">
-                                                    <rect key="frame" x="8" y="0.0" width="28" height="27.666666666666668"/>
+                                                    <rect key="frame" x="8" y="0.0" width="28" height="28"/>
                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                     <state key="normal" image="circle" catalog="system">
                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="24"/>
@@ -524,8 +524,8 @@
         <!--My Shelf-->
         <scene sceneID="5SB-km-qdL">
             <objects>
-                <tableViewController id="GuA-KY-0MN" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="Af6-aE-0KT">
+                <tableViewController id="GuA-KY-0MN" customClass="MyShelfTableViewController" customModule="BookDiary" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="Af6-aE-0KT">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -533,75 +533,88 @@
                             <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jfW-dM-6gJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="360" height="44"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JTS-GC-8wi">
+                                    <rect key="frame" x="342" y="0.0" width="51" height="44"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" image="list.dash" catalog="system"/>
+                                </button>
+                                <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="jfW-dM-6gJ">
+                                    <rect key="frame" x="5" y="0.0" width="337" height="44"/>
                                     <textInputTraits key="textInputTraits"/>
                                     <connections>
                                         <outlet property="delegate" destination="GuA-KY-0MN" id="pcX-Zr-Hmd"/>
                                     </connections>
                                 </searchBar>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JTS-GC-8wi">
-                                    <rect key="frame" x="357" y="12" width="24" height="14"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain"/>
-                                </button>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="JTS-GC-8wi" secondAttribute="trailing" id="7pC-6l-SzK"/>
+                                <constraint firstAttribute="bottom" secondItem="JTS-GC-8wi" secondAttribute="bottom" id="SsG-ZC-NPM"/>
+                                <constraint firstItem="jfW-dM-6gJ" firstAttribute="top" secondItem="jlJ-a4-g1q" secondAttribute="top" id="TNe-B1-t6W"/>
+                                <constraint firstAttribute="bottom" secondItem="jfW-dM-6gJ" secondAttribute="bottom" id="WOf-H0-TIX"/>
+                                <constraint firstItem="JTS-GC-8wi" firstAttribute="top" secondItem="jlJ-a4-g1q" secondAttribute="top" id="cHJ-w6-Ah7"/>
+                                <constraint firstItem="JTS-GC-8wi" firstAttribute="leading" secondItem="jfW-dM-6gJ" secondAttribute="trailing" id="cZm-At-rxR"/>
+                                <constraint firstItem="jfW-dM-6gJ" firstAttribute="leading" secondItem="jlJ-a4-g1q" secondAttribute="leading" constant="5" id="djb-ym-hmM"/>
+                            </constraints>
                         </view>
-                        <sections>
-                            <tableViewSection id="eif-aO-AQB">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="3ub-35-MTk">
-                                        <rect key="frame" x="0.0" y="94" width="393" height="27.666666030883789"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3ub-35-MTk" id="Vqh-Up-kta">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="27.666666030883789"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c3u-2r-uTr">
-                                                    <rect key="frame" x="8" y="0.0" width="28" height="27.666666666666668"/>
-                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                    <state key="normal" image="circle" catalog="system">
-                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="24"/>
-                                                    </state>
-                                                    <state key="selected" image="checkmark.circle.fill" catalog="system">
-                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="24"/>
-                                                    </state>
-                                                </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cJU-Kr-DlH">
-                                                    <rect key="frame" x="44" y="4" width="113" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tyW-Ge-Pu1">
-                                                    <rect key="frame" x="165" y="4" width="177" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4kr-eA-G29">
-                                                    <rect key="frame" x="332" y="-3" width="49" height="35"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Button"/>
-                                                    <buttonConfiguration key="configuration" style="plain" image="square.and.arrow.up" catalog="system"/>
-                                                </button>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="c3u-2r-uTr" firstAttribute="centerY" secondItem="Vqh-Up-kta" secondAttribute="centerY" id="R4L-AZ-c0k"/>
-                                                <constraint firstAttribute="bottom" secondItem="c3u-2r-uTr" secondAttribute="bottom" id="W7x-Zj-h0z"/>
-                                                <constraint firstItem="c3u-2r-uTr" firstAttribute="top" secondItem="Vqh-Up-kta" secondAttribute="top" id="cha-tV-YfI"/>
-                                                <constraint firstItem="c3u-2r-uTr" firstAttribute="leading" secondItem="Vqh-Up-kta" secondAttribute="leading" constant="8" id="qbk-qK-ZnQ"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                        </sections>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="postCell" id="3ub-35-MTk" customClass="MyShelfTableViewCell" customModule="BookDiary" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="94" width="393" height="54.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3ub-35-MTk" id="Vqh-Up-kta">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="54.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c3u-2r-uTr">
+                                            <rect key="frame" x="10" y="10" width="28" height="34.666666666666664"/>
+                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                            <state key="normal" image="circle" catalog="system">
+                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="24"/>
+                                            </state>
+                                            <state key="selected" image="checkmark.circle.fill" catalog="system">
+                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="24"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="completeButtonTapped:" destination="3ub-35-MTk" eventType="touchUpInside" id="GLl-3u-bKf"/>
+                                            </connections>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cJU-Kr-DlH">
+                                            <rect key="frame" x="48" y="10" width="315" height="34.666666666666664"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4kr-eA-G29">
+                                            <rect key="frame" x="363" y="10" width="20" height="34.666666666666664"/>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="plain" image="globe" catalog="system"/>
+                                            <connections>
+                                                <action selector="searchButtonTapped:" destination="3ub-35-MTk" eventType="touchUpInside" id="klc-p6-CCz"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="cJU-Kr-DlH" firstAttribute="leading" secondItem="c3u-2r-uTr" secondAttribute="trailing" constant="10" id="4Gp-hD-oi8"/>
+                                        <constraint firstItem="4kr-eA-G29" firstAttribute="leading" secondItem="cJU-Kr-DlH" secondAttribute="trailing" id="4hf-Uv-0Ni"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="cJU-Kr-DlH" secondAttribute="trailing" constant="10" id="BiZ-zQ-nnN"/>
+                                        <constraint firstItem="4kr-eA-G29" firstAttribute="top" secondItem="Vqh-Up-kta" secondAttribute="top" constant="10" id="EjB-N1-FXL"/>
+                                        <constraint firstItem="cJU-Kr-DlH" firstAttribute="top" secondItem="Vqh-Up-kta" secondAttribute="top" constant="10" id="Em0-5G-vDd"/>
+                                        <constraint firstItem="c3u-2r-uTr" firstAttribute="leading" secondItem="Vqh-Up-kta" secondAttribute="leading" constant="10" id="KWB-ZT-uTN"/>
+                                        <constraint firstAttribute="trailing" secondItem="4kr-eA-G29" secondAttribute="trailing" constant="10" id="PdI-6K-tHk"/>
+                                        <constraint firstAttribute="bottom" secondItem="4kr-eA-G29" secondAttribute="bottom" constant="10" id="Pve-Q6-vUH"/>
+                                        <constraint firstAttribute="bottom" secondItem="c3u-2r-uTr" secondAttribute="bottom" constant="10" id="VmR-rT-S9U"/>
+                                        <constraint firstAttribute="bottom" secondItem="cJU-Kr-DlH" secondAttribute="bottom" constant="10" id="mps-at-Sga"/>
+                                        <constraint firstItem="c3u-2r-uTr" firstAttribute="top" secondItem="Vqh-Up-kta" secondAttribute="top" constant="10" id="nCj-PZ-IMS"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="isCompleteButton" destination="c3u-2r-uTr" id="9mJ-pj-54U"/>
+                                    <outlet property="searchButton" destination="4kr-eA-G29" id="nSZ-li-UHU"/>
+                                    <outlet property="titleLabel" destination="cJU-Kr-DlH" id="9Kw-Oh-rzO"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
                         <connections>
                             <outlet property="dataSource" destination="GuA-KY-0MN" id="8nt-3Z-Xi1"/>
                             <outlet property="delegate" destination="GuA-KY-0MN" id="nRy-zC-1c2"/>
@@ -632,14 +645,14 @@
                             <tableViewSection headerTitle="ACCOUNT" id="Uax-D6-0DA">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Seg-hj-uIc">
-                                        <rect key="frame" x="0.0" y="50" width="393" height="75.333335876464844"/>
+                                        <rect key="frame" x="0.0" y="50" width="393" height="74.666664123535156"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Seg-hj-uIc" id="nMg-dC-DrH">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="75.333335876464844"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="74.666664123535156"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="isO-aN-skn">
-                                                    <rect key="frame" x="20" y="20.000000000000004" width="353" height="35.333333333333343"/>
+                                                    <rect key="frame" x="20" y="19.999999999999996" width="353" height="34.666666666666657"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" title="Detail"/>
                                                     <connections>
@@ -660,14 +673,14 @@
                             <tableViewSection headerTitle="BROWSE" id="fmn-kW-eGh">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="zIx-io-k5M">
-                                        <rect key="frame" x="0.0" y="203.33333587646484" width="393" height="75"/>
+                                        <rect key="frame" x="0.0" y="202.66666412353516" width="393" height="75.333335876464844"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zIx-io-k5M" id="elr-RQ-zA0">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="75"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="75.333335876464844"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9eD-hl-v23">
-                                                    <rect key="frame" x="20" y="20" width="353" height="35"/>
+                                                    <rect key="frame" x="20" y="20.000000000000004" width="353" height="35.333333333333343"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" image="chevron.right.square" catalog="system"/>
                                                 </button>
@@ -813,11 +826,11 @@
             </objects>
             <point key="canvasLocation" x="1308" y="-1863"/>
         </scene>
-        <!--Item-->
+        <!--My Shelf-->
         <scene sceneID="LZj-by-MtG">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kzq-Jq-6g8" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="QNB-j7-2x1"/>
+                    <tabBarItem key="tabBarItem" title="My Shelf" image="books.vertical" catalog="system" id="QNB-j7-2x1"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="qsL-RS-6oA">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -1056,14 +1069,14 @@
                             <tableViewSection id="t5c-3H-sUa">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="1Vt-Lj-9sv">
-                                        <rect key="frame" x="0.0" y="94" width="393" height="27.666666030883789"/>
+                                        <rect key="frame" x="0.0" y="94" width="393" height="28"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1Vt-Lj-9sv" id="DJP-5Z-dwg">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="27.666666030883789"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="28"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="igm-li-1lq">
-                                                    <rect key="frame" x="8" y="0.0" width="28" height="27.666666666666668"/>
+                                                    <rect key="frame" x="8" y="0.0" width="28" height="28"/>
                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                     <state key="normal" image="circle" catalog="system">
                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="24"/>
@@ -1121,10 +1134,13 @@
     </scenes>
     <resources>
         <image name="arrow.right.to.line.alt" catalog="system" width="128" height="100"/>
+        <image name="books.vertical" catalog="system" width="128" height="107"/>
         <image name="checkmark.circle.fill" catalog="system" width="128" height="123"/>
         <image name="chevron.right.square" catalog="system" width="128" height="114"/>
         <image name="circle" catalog="system" width="128" height="123"/>
+        <image name="globe" catalog="system" width="128" height="123"/>
         <image name="line.horizontal.3" catalog="system" width="128" height="65"/>
+        <image name="list.dash" catalog="system" width="128" height="85"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <image name="star" catalog="system" width="128" height="116"/>
