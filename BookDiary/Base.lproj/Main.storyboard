@@ -1122,6 +1122,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Search" id="I0a-Co-Php"/>
+                    <connections>
+                        <outlet property="searchBar" destination="1Xu-rx-zvb" id="AAs-ot-Tzz"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HSz-6A-aqT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="6CX-TM-tn8" userLabel="Exit" sceneMemberID="exit"/>

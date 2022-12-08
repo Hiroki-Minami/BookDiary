@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SearchTableViewController: UITableViewController, searchTableViewCellDelegate {
+class SearchTableViewController: UITableViewController, searchTableViewCellDelegate, UISearchBarDelegate, UISearchDisplayDelegate {
   
   var allPosts: [Post] = []
   var shownPosts: [Post] = []
@@ -16,6 +16,8 @@ class SearchTableViewController: UITableViewController, searchTableViewCellDeleg
   var genreIsShown: [Genres: Bool] = [:]
   var completionIsShown: [Completion: Bool] = [:]
   var rateFilter = 0
+  
+  @IBOutlet weak var searchBar: UISearchBar!
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -55,6 +57,22 @@ class SearchTableViewController: UITableViewController, searchTableViewCellDeleg
         }
       }
     })
+    
+    print(searchBar.text!.isEmpty)
+    shownPosts = shownPosts.filter({
+      guard !searchBar.text!.isEmpty else {
+        return true
+      }
+      return $0.title.lowercased().contains(searchBar.text!.lowercased()) || $0.author.lowercased().contains(searchBar.text!.lowercased())
+    })
+  }
+  
+  func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    print(searchText)
+    print(searchBar.text!)
+    print(searchText.isEmpty)
+    print(searchBar.text!.isEmpty)
+    updateUI()
   }
   
   @IBAction func unwindToSearchTableView(segue: UIStoryboardSegue) {
@@ -83,7 +101,7 @@ class SearchTableViewController: UITableViewController, searchTableViewCellDeleg
     cell.delegate = self
     cell.post = shownPosts[indexPath.row]
     cell.titleButton.setTitle(shownPosts[indexPath.row].title, for: .normal)
-    cell.userButton.setTitle(shownPosts[indexPath.row].title, for: .normal)
+    cell.userButton.setTitle(shownPosts[indexPath.row].author, for: .normal)
     return cell
   }
   
