@@ -15,7 +15,7 @@ protocol searchTableViewCellDelegate: AnyObject {
 class SearchTableViewCell: UITableViewCell {
   
   weak var delegate: searchTableViewCellDelegate?
-  weak var book: Book?
+  var post: Post?
   
   @IBOutlet var titleButton: UIButton!
   @IBOutlet var userButton: UIButton!

@@ -13,29 +13,27 @@ class SearchFilterViewController: UIViewController {
   @IBOutlet var genreVerticalStackView: UIStackView!
   var genreCollapseVerticalStackView: UIStackView?
   var genreCheckBoxs: [UIButton] = []
-  var genreChecked: [Genre : Bool] = [:]
-  var doneChecked] [completion: Bool] = [:]
-  
+  var genreIsShown: [Genres: Bool] = [:]
   
   @IBOutlet var doneCollapseButton: UIButton!
   @IBOutlet var doneCollapseVerticalStackView: UIStackView!
   @IBOutlet var inCompleteCheckButton: UIButton!
+  @IBOutlet var completeCheckButton: UIButton!
   
-  
+  var completionIsShown: [Completion: Bool] = [:]
   @IBOutlet var rateCollapseButton: UIButton!
   @IBOutlet var rateSlider: UISlider!
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    // TODO: make vertical view with genres and add them into view
     let genreStackView = UIStackView()
     genreStackView.translatesAutoresizingMaskIntoConstraints = false
     genreStackView.axis = .vertical
     genreStackView.alignment = .fill
     genreStackView.distribution = .fillProportionally
     
-    for genre in Genres {
+    for genre in Genres.allCases {
       
       let checkBox = UIButton()
       checkBox.setImage(UIImage(systemName: "square"), for: .normal)
@@ -45,7 +43,7 @@ class SearchFilterViewController: UIViewController {
       
       let genreLabel = UILabel()
       genreLabel.translatesAutoresizingMaskIntoConstraints = false
-      genreLabel.text = genre
+      genreLabel.text = genre.rawValue
       
       let horizontalStackView = UIStackView(arrangedSubviews: [checkBox, genreLabel])
       horizontalStackView.translatesAutoresizingMaskIntoConstraints = false
@@ -62,7 +60,10 @@ class SearchFilterViewController: UIViewController {
   @objc func genreCheckBoxTapped(_ sender: UIButton) {
     for (index, button) in genreCheckBoxs.enumerated() {
       if button === sender {
-        genreChecked[Genre[index]].toggle()
+        let genre = Genres.allCases[index]
+        if let genreChecked = genreIsShown[genre] {
+          genreIsShown[genre] = !genreChecked
+        }
       }
     }
   }
@@ -73,6 +74,15 @@ class SearchFilterViewController: UIViewController {
     genreCollapseVerticalStackView?.isHidden.toggle()
     
   }
+  
+  @IBAction func doneCheckButtonTapped(_ sender: UIButton) {
+    if sender == inCompleteCheckButton {
+      inCompleteCheckButton.isSelected.toggle()
+    } else {
+      completeCheckButton.isSelected.toggle()
+    }
+  }
+  
   
   @IBAction func doneCollapseButtonTapped(_ sender: UIButton) {
     sender.isSelected.toggle()
@@ -94,7 +104,7 @@ class SearchFilterViewController: UIViewController {
     // TODO: save filter rate
     // TODO: save filter done
     
-    Setting.filters.save(genreChecked)
+//    Setting.filters.save(genreChecked)
   }
   
   @IBAction func cancelButtonTapped(_ sender: UIBarButtonItem) {
