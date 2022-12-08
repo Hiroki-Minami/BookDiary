@@ -19,10 +19,11 @@ class SearchFilterViewController: UIViewController {
   @IBOutlet var doneCollapseVerticalStackView: UIStackView!
   @IBOutlet var inCompleteCheckButton: UIButton!
   @IBOutlet var completeCheckButton: UIButton!
-  
   var completionIsShown: [Completion: Bool] = [:]
+  
   @IBOutlet var rateCollapseButton: UIButton!
   @IBOutlet var rateSlider: UISlider!
+  var rate: Float = 0
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -38,6 +39,7 @@ class SearchFilterViewController: UIViewController {
       let checkBox = UIButton()
       checkBox.setImage(UIImage(systemName: "square"), for: .normal)
       checkBox.setImage(UIImage(systemName: "checkmark.square"), for: .selected)
+      checkBox.isSelected = genreIsShown[genre]!
       checkBox.addTarget(self, action: #selector(genreCheckBoxTapped(_:)), for: .touchUpInside)
       genreCheckBoxs.append(checkBox)
       
@@ -53,8 +55,17 @@ class SearchFilterViewController: UIViewController {
       
       genreStackView.addArrangedSubview(horizontalStackView)
     }
-    
     genreVerticalStackView.addArrangedSubview(genreStackView)
+    genreCollapseVerticalStackView = genreStackView
+    genreCollapseVerticalStackView?.isHidden = true
+    
+    
+    inCompleteCheckButton.isSelected = completionIsShown[.incomplete]!
+    completeCheckButton.isSelected = completionIsShown[.complete]!
+    doneCollapseVerticalStackView.isHidden = true
+    
+    rateSlider.value = rate
+    rateSlider.isHidden = true
   }
   
   @objc func genreCheckBoxTapped(_ sender: UIButton) {
@@ -63,6 +74,8 @@ class SearchFilterViewController: UIViewController {
         let genre = Genres.allCases[index]
         if let genreChecked = genreIsShown[genre] {
           genreIsShown[genre] = !genreChecked
+          sender.isSelected.toggle()
+          break
         }
       }
     }
@@ -78,8 +91,10 @@ class SearchFilterViewController: UIViewController {
   @IBAction func doneCheckButtonTapped(_ sender: UIButton) {
     if sender == inCompleteCheckButton {
       inCompleteCheckButton.isSelected.toggle()
+      completionIsShown[.incomplete]?.toggle()
     } else {
       completeCheckButton.isSelected.toggle()
+      completionIsShown[.complete]?.toggle()
     }
   }
   
@@ -94,21 +109,12 @@ class SearchFilterViewController: UIViewController {
     rateSlider.isHidden.toggle()
   }
   
+  @IBAction func rateSliderValueChanged(_ sender: UISlider) {
+    rate = sender.value
+  }
+  
+  
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     guard segue.identifier == "saveFilter" else { return }
-    
-    // TODO: save filter settings
-//    for (genre, isShown) in genreChecked {
-//
-//    }
-    // TODO: save filter rate
-    // TODO: save filter done
-    
-//    Setting.filters.save(genreChecked)
   }
-  
-  @IBAction func cancelButtonTapped(_ sender: UIBarButtonItem) {
-    dismiss(animated: true)
-  }
-  
 }

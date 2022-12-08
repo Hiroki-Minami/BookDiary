@@ -273,14 +273,14 @@
                             <tableViewSection id="um3-QP-cMV">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="vfA-rt-SfZ">
-                                        <rect key="frame" x="0.0" y="50" width="393" height="27.666666030883789"/>
+                                        <rect key="frame" x="0.0" y="50" width="393" height="28.333333969116211"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vfA-rt-SfZ" id="PeV-ku-pqc">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="27.666666030883789"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="28.333333969116211"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NV4-S9-WQ0">
-                                                    <rect key="frame" x="8" y="0.0" width="28" height="27.666666666666668"/>
+                                                    <rect key="frame" x="8" y="0.0" width="28" height="28.333333333333332"/>
                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                     <state key="normal" image="circle" catalog="system">
                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="24"/>
@@ -554,14 +554,14 @@
                             <tableViewSection id="eif-aO-AQB">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="3ub-35-MTk">
-                                        <rect key="frame" x="0.0" y="94" width="393" height="27.666666030883789"/>
+                                        <rect key="frame" x="0.0" y="94" width="393" height="28.333333969116211"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3ub-35-MTk" id="Vqh-Up-kta">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="27.666666030883789"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="28.333333969116211"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c3u-2r-uTr">
-                                                    <rect key="frame" x="8" y="0.0" width="28" height="27.666666666666668"/>
+                                                    <rect key="frame" x="8" y="0.0" width="28" height="28.333333333333332"/>
                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                     <state key="normal" image="circle" catalog="system">
                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="24"/>
@@ -1027,7 +1027,7 @@
         <scene sceneID="eIF-Ms-8fr">
             <objects>
                 <tableViewController id="DhT-sA-AaW" customClass="SearchTableViewController" customModule="BookDiary" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="UYF-CU-5x2">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="UYF-CU-5x2">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1036,21 +1036,21 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ozI-H8-xMl">
-                                    <rect key="frame" x="8" y="0.0" width="377" height="56"/>
+                                    <rect key="frame" x="8" y="0.0" width="377" height="36"/>
                                     <subviews>
                                         <searchBar contentMode="redraw" text="" placeholder="Title or username" translatesAutoresizingMaskIntoConstraints="NO" id="1Xu-rx-zvb">
-                                            <rect key="frame" x="0.0" y="0.0" width="321" height="56"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="321" height="36"/>
                                             <textInputTraits key="textInputTraits"/>
                                             <connections>
                                                 <outlet property="delegate" destination="DhT-sA-AaW" id="vXG-qA-MfN"/>
                                             </connections>
                                         </searchBar>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Npv-bb-IgI">
-                                            <rect key="frame" x="321" y="0.0" width="56" height="56"/>
+                                            <rect key="frame" x="321" y="0.0" width="56" height="36"/>
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="plain" image="filter"/>
                                             <connections>
-                                                <segue destination="0xp-di-j9v" kind="show" id="UIe-er-UPV"/>
+                                                <segue destination="0xp-di-j9v" kind="show" destinationCreationSelector="goToSearchFilterViewController:" id="UIe-er-UPV"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -1061,63 +1061,61 @@
                                 <constraint firstItem="ozI-H8-xMl" firstAttribute="leading" secondItem="bN3-9L-1Pd" secondAttribute="leading" constant="8" id="Bsl-99-ef6"/>
                                 <constraint firstAttribute="trailing" secondItem="ozI-H8-xMl" secondAttribute="trailing" constant="8" id="WkQ-YV-ECa"/>
                                 <constraint firstItem="ozI-H8-xMl" firstAttribute="top" secondItem="bN3-9L-1Pd" secondAttribute="top" id="c1K-l9-NJU"/>
+                                <constraint firstAttribute="bottom" secondItem="ozI-H8-xMl" secondAttribute="bottom" constant="8" id="hcI-pN-fQJ"/>
                             </constraints>
                         </view>
-                        <sections>
-                            <tableViewSection id="t5c-3H-sUa">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchCell" id="1Vt-Lj-9sv" customClass="SearchTableViewCell" customModule="BookDiary" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="94" width="393" height="34.666667938232422"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1Vt-Lj-9sv" id="DJP-5Z-dwg">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="34.666667938232422"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchCell" id="1Vt-Lj-9sv" customClass="SearchTableViewCell" customModule="BookDiary" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="94" width="393" height="34.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1Vt-Lj-9sv" id="DJP-5Z-dwg">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="34.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="Ifr-eM-JfK">
+                                            <rect key="frame" x="16" y="0.0" width="361" height="34.666666666666664"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="Ifr-eM-JfK">
-                                                    <rect key="frame" x="16" y="0.0" width="361" height="34.666666666666664"/>
-                                                    <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dkV-ML-QeF">
-                                                            <rect key="frame" x="0.0" y="0.0" width="52.666666666666664" height="34.666666666666664"/>
-                                                            <state key="normal" title="Button"/>
-                                                            <buttonConfiguration key="configuration" style="plain" title="title"/>
-                                                            <connections>
-                                                                <action selector="titleButtonTapped:" destination="6CX-TM-tn8" eventType="touchUpInside" id="9zN-0D-ESn"/>
-                                                            </connections>
-                                                        </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Mc-9A-esK">
-                                                            <rect key="frame" x="154" y="0.0" width="57.333333333333343" height="34.666666666666664"/>
-                                                            <state key="normal" title="Button"/>
-                                                            <buttonConfiguration key="configuration" style="plain" title="user"/>
-                                                            <connections>
-                                                                <action selector="userButtonTapped:" destination="6CX-TM-tn8" eventType="touchUpInside" id="NqU-bg-bEa"/>
-                                                            </connections>
-                                                        </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ih6-k3-oTU">
-                                                            <rect key="frame" x="312.66666666666669" y="0.0" width="48.333333333333314" height="34.666666666666664"/>
-                                                            <state key="normal" title="Button"/>
-                                                            <buttonConfiguration key="configuration" style="plain" image="square.and.arrow.up" catalog="system"/>
-                                                            <connections>
-                                                                <action selector="webSearchButtonTapped:" destination="1Vt-Lj-9sv" eventType="touchUpInside" id="Wtz-yA-TvJ"/>
-                                                            </connections>
-                                                        </button>
-                                                    </subviews>
-                                                </stackView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dkV-ML-QeF">
+                                                    <rect key="frame" x="0.0" y="0.0" width="52.666666666666664" height="34.666666666666664"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" title="title"/>
+                                                    <connections>
+                                                        <action selector="titleButtonTapped:" destination="6CX-TM-tn8" eventType="touchUpInside" id="9zN-0D-ESn"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Mc-9A-esK">
+                                                    <rect key="frame" x="154" y="0.0" width="57.333333333333343" height="34.666666666666664"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" title="user"/>
+                                                    <connections>
+                                                        <action selector="userButtonTapped:" destination="6CX-TM-tn8" eventType="touchUpInside" id="NqU-bg-bEa"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ih6-k3-oTU">
+                                                    <rect key="frame" x="312.66666666666669" y="0.0" width="48.333333333333314" height="34.666666666666664"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" image="square.and.arrow.up" catalog="system"/>
+                                                    <connections>
+                                                        <action selector="webSearchButtonTapped:" destination="1Vt-Lj-9sv" eventType="touchUpInside" id="Wtz-yA-TvJ"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstItem="Ifr-eM-JfK" firstAttribute="top" secondItem="DJP-5Z-dwg" secondAttribute="top" id="F3Z-ld-HdT"/>
-                                                <constraint firstAttribute="bottom" secondItem="Ifr-eM-JfK" secondAttribute="bottom" id="SKA-cf-cfW"/>
-                                                <constraint firstItem="Ifr-eM-JfK" firstAttribute="leading" secondItem="DJP-5Z-dwg" secondAttribute="leading" constant="16" id="bqo-bo-cYa"/>
-                                                <constraint firstAttribute="trailing" secondItem="Ifr-eM-JfK" secondAttribute="trailing" constant="16" id="zvR-Mt-HUG"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="titleButton" destination="dkV-ML-QeF" id="y1h-Dg-OIf"/>
-                                            <outlet property="userButton" destination="9Mc-9A-esK" id="WAm-In-SIK"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                        </sections>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Ifr-eM-JfK" firstAttribute="top" secondItem="DJP-5Z-dwg" secondAttribute="top" id="F3Z-ld-HdT"/>
+                                        <constraint firstAttribute="bottom" secondItem="Ifr-eM-JfK" secondAttribute="bottom" id="SKA-cf-cfW"/>
+                                        <constraint firstItem="Ifr-eM-JfK" firstAttribute="leading" secondItem="DJP-5Z-dwg" secondAttribute="leading" constant="16" id="bqo-bo-cYa"/>
+                                        <constraint firstAttribute="trailing" secondItem="Ifr-eM-JfK" secondAttribute="trailing" constant="16" id="zvR-Mt-HUG"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="titleButton" destination="dkV-ML-QeF" id="y1h-Dg-OIf"/>
+                                    <outlet property="userButton" destination="9Mc-9A-esK" id="WAm-In-SIK"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
                         <connections>
                             <outlet property="dataSource" destination="DhT-sA-AaW" id="lin-gW-coI"/>
                             <outlet property="delegate" destination="DhT-sA-AaW" id="HkE-yY-Btk"/>
@@ -1262,8 +1260,11 @@
                                                             </button>
                                                         </subviews>
                                                     </stackView>
-                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="pdp-H6-HS7">
+                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="pdp-H6-HS7">
                                                         <rect key="frame" x="-2" y="22" width="365" height="184.66666666666666"/>
+                                                        <connections>
+                                                            <action selector="rateSliderValueChanged:" destination="0xp-di-j9v" eventType="valueChanged" id="0FZ-Pg-izL"/>
+                                                        </connections>
                                                     </slider>
                                                 </subviews>
                                             </stackView>
@@ -1306,12 +1307,12 @@
                     <navigationItem key="navigationItem" title="Search Filter" id="pdq-eq-EmY">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="JSU-7o-bem">
                             <connections>
-                                <action selector="cancelButtonTapped:" destination="0xp-di-j9v" id="8Qo-7Y-PCh"/>
+                                <segue destination="OXV-lA-2OR" kind="unwind" unwindAction="unwindToSearchTableViewWithSegue:" id="QQS-qf-rXR"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="dEG-WR-bg6">
                             <connections>
-                                <segue destination="OXV-lA-2OR" kind="unwind" unwindAction="unwindToSearchTableViewWithSegue:" id="4HL-Lf-5eR"/>
+                                <segue destination="OXV-lA-2OR" kind="unwind" identifier="saveFilter" unwindAction="unwindToSearchTableViewWithSegue:" id="4HL-Lf-5eR"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

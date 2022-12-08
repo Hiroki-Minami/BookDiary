@@ -41,7 +41,19 @@ class SearchTableViewController: UITableViewController, searchTableViewCellDeleg
       let isDone = $0.isComplete
       let flg = isDone ? completionIsShown[.complete]: completionIsShown[.incomplete]
       
-      return genres.keys.contains($0.genres!) && flg! && $0.rates! > Float(rateFilter)
+      if let postsGenre = $0.genres {
+        if let postsRate = $0.rates {
+          return genres.keys.contains(postsGenre) && flg! && postsRate > Float(rateFilter)
+        } else {
+          return genres.keys.contains(postsGenre) && flg!
+        }
+      } else {
+        if let postsRate = $0.rates {
+          return flg! && postsRate > Float(rateFilter)
+        } else {
+          return flg!
+        }
+      }
     })
   }
   
@@ -51,7 +63,7 @@ class SearchTableViewController: UITableViewController, searchTableViewCellDeleg
     
     self.genreIsShown = sourceViewController.genreIsShown
     self.completionIsShown = sourceViewController.completionIsShown
-    rateFilter = Int(round(sourceViewController.rateSlider.value))
+    rateFilter = Int(round(sourceViewController.rate))
     updateUI()
   }
   
@@ -67,12 +79,20 @@ class SearchTableViewController: UITableViewController, searchTableViewCellDeleg
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath) as! SearchTableViewCell
+    let cell = tableView.dequeueReusableCell(withIdentifier: "SearchCell", for: indexPath) as! SearchTableViewCell
     cell.delegate = self
     cell.post = shownPosts[indexPath.row]
     cell.titleButton.setTitle(shownPosts[indexPath.row].title, for: .normal)
     cell.userButton.setTitle(shownPosts[indexPath.row].title, for: .normal)
-    
     return cell
   }
+  
+  @IBSegueAction func goToSearchFilterViewController(_ coder: NSCoder) -> SearchFilterViewController? {
+    let sfvc = SearchFilterViewController(coder: coder)
+    sfvc?.genreIsShown = genreIsShown
+    sfvc?.completionIsShown = completionIsShown
+    sfvc?.rate = Float(rateFilter)
+    return sfvc
+  }
+  
 }
