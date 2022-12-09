@@ -34,6 +34,17 @@ class MyShelfTableViewController: UITableViewController, MyShelfCellDelegate {
     }
   }
   
+  func webSearchButtonTapped(sender: MyShelfTableViewCell) {
+    if let indexPath = tableView.indexPath(for: sender) {
+      let post = posts[indexPath.row]
+      let title = post.title
+      let url = URL(string: Setting.browser.rawValue + title)!
+      if UIApplication.shared.canOpenURL(url) {
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+      }
+    }
+  }
+  
   // MARK: - Table view data source
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -56,4 +67,5 @@ class MyShelfTableViewController: UITableViewController, MyShelfCellDelegate {
       tableView.deleteRows(at: [indexPath], with: .automatic)
     }
   }
+  
 }

@@ -27,6 +27,6 @@ public enum Genres: String, CaseIterable, Codable {
 ///   if you type Browsers.Google, then will get "Google" of String,
 ///   if you type Browsers.Google.rawValue, then will get "https://www.google.com" of String
 public enum Browsers: String, CaseIterable, Codable {
-  case Google = "https://www.google.com"
-  case Amazon = "https://www.amazon.com"
+  case Google = "https://www.google.com/search?q="
+  case Amazon = "https://www.amazon.ca/s?k="
 }

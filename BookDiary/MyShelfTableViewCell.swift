@@ -11,7 +11,6 @@ class MyShelfTableViewCell: UITableViewCell {
   
   @IBOutlet weak var isCompleteButton: UIButton!
   @IBOutlet weak var titleLabel: UILabel!
-  @IBOutlet weak var searchButton: UIButton!
   
   var dekegate: MyShelfCellDelegate?
   
@@ -29,29 +28,13 @@ class MyShelfTableViewCell: UITableViewCell {
     dekegate?.checkmarkTapped(sender: self)
   }
   
-  @IBAction func searchButtonTapped(_ sender: UIButton) {
-//    guard let url = URL(string: "http://www.google.com") else {
-//      return //be safe
-//    }
-//
-//    if #available(iOS 10.0, *) {
-//        UIApplication.shared.open(url, options: [:], completionHandler: nil)
-//    } else {
-//        UIApplication.shared.openURL(url)
-//    }
-    let url = URL(string: Setting.browser.rawValue)!
-    if UIApplication.shared.canOpenURL(url) {
-        UIApplication.shared.open(url, options: [:], completionHandler: nil)
-        //If you want handle the completion block than
-        UIApplication.shared.open(url, options: [:], completionHandler: { (success) in
-             print("Open url : \(success)")
-        })
-    }
+  @IBAction func webSearchButtonTapped(_ sender: UIButton) {
+    dekegate?.webSearchButtonTapped(sender: self)
   }
-  
   
 }
 
 protocol MyShelfCellDelegate: AnyObject {
   func checkmarkTapped(sender: MyShelfTableViewCell)
+  func webSearchButtonTapped(sender: MyShelfTableViewCell)
 }
