@@ -30,3 +30,10 @@ public enum Browsers: String, CaseIterable, Codable {
   case Google = "https://www.google.com"
   case Amazon = "https://www.amazon.com"
 }
+
+/// This is used for filter the list.
+/// Example:
+///   if you type Completion.complete, then will get "complete" of String,
+public enum Completion: String, CaseIterable, Codable {
+  case complete, incomplete
+}
