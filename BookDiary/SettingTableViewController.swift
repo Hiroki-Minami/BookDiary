@@ -23,12 +23,11 @@ class SettingTableViewController: UITableViewController {
     let closure = { (action: UIAction) in
       guard let currentUser = self.user else { return }
       currentUser.userSetting.browser = Browsers.getInstance(name: action.title)
-      
       // save setting
     }
     browserButton.menu = UIMenu(children: [
-      UIAction(title: Browsers.Google.name, handler: closure),
-      UIAction(title: Browsers.Amazon.name, handler: closure)
+      UIAction(title: "\(Browsers.Google)", handler: closure),
+      UIAction(title: "\(Browsers.Amazon)", handler: closure)
     ])
     browserButton.showsMenuAsPrimaryAction = true
   }
@@ -40,4 +39,7 @@ class SettingTableViewController: UITableViewController {
     return atvc
   }
   
+  @IBAction func unwindSetting(segue: UIStoryboardSegue) {
+    
+  }
 }

@@ -30,20 +30,11 @@ public enum Browsers: String, CaseIterable, Codable {
   case Google = "https://www.google.com"
   case Amazon = "https://www.amazon.com"
   
-  var name: String {
-    switch self {
-    case .Google:
-      return "google"
-    case .Amazon:
-      return "amazon"
-    }
-  }
-  
   public static func getInstance(name: String) -> Browsers {
     switch name {
-    case Browsers.Google.name:
+    case "\(Browsers.Google)":
       return Browsers.Google
-    case Browsers.Amazon.name:
+    case "\(Browsers.Amazon)":
       return Browsers.Amazon
     default:
       return Browsers.Google

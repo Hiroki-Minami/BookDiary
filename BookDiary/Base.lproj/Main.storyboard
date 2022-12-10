@@ -731,6 +731,9 @@
                                                     <rect key="frame" x="20" y="0.0" width="353" height="34.333333333333336"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="textFieldEditingChanged:" destination="iZw-Os-rKR" eventType="editingChanged" id="FV0-tI-zzr"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -756,6 +759,9 @@
                                                     <rect key="frame" x="20" y="0.0" width="353" height="34.333333333333336"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="textFieldEditingChanged:" destination="iZw-Os-rKR" eventType="editingChanged" id="ZVg-gf-FUK"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -781,6 +787,9 @@
                                                     <rect key="frame" x="20" y="0.0" width="353" height="34.333333333333336"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="textFieldEditingChanged:" destination="iZw-Os-rKR" eventType="editingChanged" id="N7z-zE-H1d"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -806,6 +815,9 @@
                                                     <rect key="frame" x="20" y="0.0" width="353" height="34.333333333333336"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="textFieldEditingChanged:" destination="iZw-Os-rKR" eventType="editingChanged" id="gi7-fH-7f6"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -831,6 +843,9 @@
                                                     <rect key="frame" x="20" y="0.0" width="353" height="34.333333333333336"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="textFieldEditingChanged:" destination="iZw-Os-rKR" eventType="editingChanged" id="Nok-Rk-nPU"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -856,6 +871,9 @@
                                                     <rect key="frame" x="20" y="0.0" width="353" height="34.333333333333336"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="textFieldEditingChanged:" destination="iZw-Os-rKR" eventType="editingChanged" id="ied-9e-5iN"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
