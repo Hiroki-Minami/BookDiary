@@ -58,7 +58,6 @@ class SearchTableViewController: UITableViewController, searchTableViewCellDeleg
       }
     })
     
-    print(searchBar.text!.isEmpty)
     shownPosts = shownPosts.filter({
       guard !searchBar.text!.isEmpty else {
         return true

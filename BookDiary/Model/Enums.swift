@@ -29,6 +29,26 @@ public enum Genres: String, CaseIterable, Codable {
 public enum Browsers: String, CaseIterable, Codable {
   case Google = "https://www.google.com"
   case Amazon = "https://www.amazon.com"
+  
+  var name: String {
+    switch self {
+    case .Google:
+      return "google"
+    case .Amazon:
+      return "amazon"
+    }
+  }
+  
+  public static func getInstance(name: String) -> Browsers {
+    switch name {
+    case Browsers.Google.name:
+      return Browsers.Google
+    case Browsers.Amazon.name:
+      return Browsers.Amazon
+    default:
+      return Browsers.Google
+    }
+  }
 }
 
 /// This is used for filter the list.
