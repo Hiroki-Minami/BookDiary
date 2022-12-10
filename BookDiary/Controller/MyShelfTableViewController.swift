@@ -8,7 +8,7 @@
 import UIKit
 
 class MyShelfTableViewController: UITableViewController, MyShelfCellDelegate {
-  
+
   var posts = [Post]()
   
   override func viewDidLoad() {
@@ -25,23 +25,49 @@ class MyShelfTableViewController: UITableViewController, MyShelfCellDelegate {
     
   }
   
+  @IBSegueAction func editPost(_ coder: NSCoder, sender: Any?) -> MyShelfDetailTableViewController? {
+    let detailController = MyShelfDetailTableViewController(coder: coder)
+    guard let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) else {
+      return detailController
+    }
+    tableView.deselectRow(at: indexPath, animated: true)
+    detailController?.post = posts[indexPath.row]
+    return detailController
+  }
+  
+  
+  @IBAction func unwindToPost(segue: UIStoryboardSegue) {
+    guard segue.identifier == "saveUnwind" else { return }
+    let sourceViewContoller = segue.source as! MyShelfDetailTableViewController
+    
+    if let post = sourceViewContoller.post {
+      if let indexOfExistingTodo = posts.firstIndex(of: post) {
+        posts[indexOfExistingTodo] = post
+        tableView.reloadRows(at: [IndexPath(row: indexOfExistingTodo, section: 0)], with: .automatic)
+      } else {
+        let newIndexPath = IndexPath(row: posts.count, section: 0)
+        posts.append(post)
+        tableView.insertRows(at: [newIndexPath], with: .automatic)
+      }
+    }
+  }
+  
+  // MARK: -
+  func webSearchButtonTapped(sender: MyShelfTableViewCell) {
+    if let indexPath = tableView.indexPath(for: sender) {
+      let post = posts[indexPath.row]
+      if let url = URL(string: "\(Setting.browser.rawValue)\(post.title)") {
+          UIApplication.shared.open(url)
+      }
+    }
+  }
+  
   func checkmarkTapped(sender: MyShelfTableViewCell) {
     if let indexPath = tableView.indexPath(for: sender) {
       var post = posts[indexPath.row]
       post.isComplete.toggle()
       posts[indexPath.row] = post
       tableView.reloadRows(at: [indexPath], with: .automatic)
-    }
-  }
-  
-  func webSearchButtonTapped(sender: MyShelfTableViewCell) {
-    if let indexPath = tableView.indexPath(for: sender) {
-      let post = posts[indexPath.row]
-      let title = post.title
-      let url = URL(string: Setting.browser.rawValue + title)!
-      if UIApplication.shared.canOpenURL(url) {
-        UIApplication.shared.open(url, options: [:], completionHandler: nil)
-      }
     }
   }
   
@@ -67,5 +93,4 @@ class MyShelfTableViewController: UITableViewController, MyShelfCellDelegate {
       tableView.deleteRows(at: [indexPath], with: .automatic)
     }
   }
-  
 }

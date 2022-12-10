@@ -16,6 +16,8 @@
 		60A1749929414F0100490E55 /* FileManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A1749829414F0100490E55 /* FileManager+Extensions.swift */; };
 		60A1749B2941BEA700490E55 /* MyShelfTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A1749A2941BEA700490E55 /* MyShelfTableViewCell.swift */; };
 		60A1749D2941BEC500490E55 /* MyShelfTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A1749C2941BEC500490E55 /* MyShelfTableViewController.swift */; };
+		60E5258829440F9100A3DE17 /* MyShelfDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E5258729440F9100A3DE17 /* MyShelfDetailTableViewController.swift */; };
+		60E5258B2944638700A3DE17 /* StarRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E5258A2944638700A3DE17 /* StarRatingView.swift */; };
 		94770665293AC9D700CFA877 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94770664293AC9D700CFA877 /* AppDelegate.swift */; };
 		94770667293AC9D700CFA877 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94770666293AC9D700CFA877 /* SceneDelegate.swift */; };
 		94770669293AC9D700CFA877 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94770668293AC9D700CFA877 /* ViewController.swift */; };
@@ -34,6 +36,8 @@
 		60A1749829414F0100490E55 /* FileManager+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extensions.swift"; sourceTree = "<group>"; };
 		60A1749A2941BEA700490E55 /* MyShelfTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyShelfTableViewCell.swift; sourceTree = "<group>"; };
 		60A1749C2941BEC500490E55 /* MyShelfTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyShelfTableViewController.swift; sourceTree = "<group>"; };
+		60E5258729440F9100A3DE17 /* MyShelfDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyShelfDetailTableViewController.swift; sourceTree = "<group>"; };
+		60E5258A2944638700A3DE17 /* StarRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRatingView.swift; sourceTree = "<group>"; };
 		94770661293AC9D700CFA877 /* BookDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94770664293AC9D700CFA877 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94770666293AC9D700CFA877 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,12 +59,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		600924F129452FFE005D1F56 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				60A1749C2941BEC500490E55 /* MyShelfTableViewController.swift */,
+				60E5258729440F9100A3DE17 /* MyShelfDetailTableViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		60A1749729414EC500490E55 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				60A1749829414F0100490E55 /* FileManager+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		60E525892944631500A3DE17 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				60E5258A2944638700A3DE17 /* StarRatingView.swift */,
+				60A1749A2941BEA700490E55 /* MyShelfTableViewCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		60F8D49F293BBD2B00CCADF9 /* Model */ = {
@@ -95,12 +117,12 @@
 		94770663293AC9D700CFA877 /* BookDiary */ = {
 			isa = PBXGroup;
 			children = (
+				600924F129452FFE005D1F56 /* Controller */,
+				60E525892944631500A3DE17 /* View */,
 				60A1749729414EC500490E55 /* Extensions */,
 				60F8D49F293BBD2B00CCADF9 /* Model */,
 				94770664293AC9D700CFA877 /* AppDelegate.swift */,
 				94770666293AC9D700CFA877 /* SceneDelegate.swift */,
-				60A1749C2941BEC500490E55 /* MyShelfTableViewController.swift */,
-				60A1749A2941BEA700490E55 /* MyShelfTableViewCell.swift */,
 				94770668293AC9D700CFA877 /* ViewController.swift */,
 				9477066A293AC9D700CFA877 /* Main.storyboard */,
 				9477066D293AC9D800CFA877 /* Assets.xcassets */,
@@ -187,8 +209,10 @@
 				6066F59C293D5256005F83B2 /* Enums.swift in Sources */,
 				60A1749D2941BEC500490E55 /* MyShelfTableViewController.swift in Sources */,
 				6066F5A0293D76E0005F83B2 /* Poster.swift in Sources */,
+				60E5258B2944638700A3DE17 /* StarRatingView.swift in Sources */,
 				94770669293AC9D700CFA877 /* ViewController.swift in Sources */,
 				6066F59A293D4D15005F83B2 /* Post.swift in Sources */,
+				60E5258829440F9100A3DE17 /* MyShelfDetailTableViewController.swift in Sources */,
 				60A1749B2941BEA700490E55 /* MyShelfTableViewCell.swift in Sources */,
 				94770665293AC9D700CFA877 /* AppDelegate.swift in Sources */,
 				94770667293AC9D700CFA877 /* SceneDelegate.swift in Sources */,
