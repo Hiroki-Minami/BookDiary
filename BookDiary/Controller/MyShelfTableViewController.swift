@@ -56,7 +56,7 @@ class MyShelfTableViewController: UITableViewController, MyShelfCellDelegate {
   func webSearchButtonTapped(sender: MyShelfTableViewCell) {
     if let indexPath = tableView.indexPath(for: sender) {
       let post = posts[indexPath.row]
-      let url = Setting.browser.rawValue + title!
+      let url = Setting.browser.rawValue + post.title
       if let url = URL(string: url) {
           UIApplication.shared.open(url)
       }
