@@ -16,11 +16,14 @@ class LogInViewController: UIViewController {
   
   @IBOutlet var logInButton: UIButton!
   
+  @IBOutlet var alertTextView: UITextView!
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view.
     // TODO: if there is data on local file this step will be skipped and navigate to home
     updateLogInButtonState()
+    alertTextView.isHidden = false
   }
   
   func updateLogInButtonState() {
@@ -37,7 +40,10 @@ class LogInViewController: UIViewController {
   /// this function is invoked when you tapped login button and are about to go to home view controller
   /// if the user data can't be find in the file loging in is failed
   func validateLogIn() -> Bool {
-    guard let users = User.loadUsers() else { return false }
+    guard let users = User.loadUsers() else {
+      alertTextView.isHidden = false
+      alertTextView.text = "Create your account at first."
+      return false }
     for user in users {
       let email = emailTextField.text!
       let password = passwordTextField.text!
@@ -46,10 +52,13 @@ class LogInViewController: UIViewController {
         return true
       }
     }
+    alertTextView.isHidden = false
+    alertTextView.text = "Email or password was wrong."
     return false
   }
   
   @IBAction func logInButtonTapped(_ sender: UIButton) {
+    alertTextView.isHidden = true
     guard validateLogIn() else { return }
     
     let mainTabBarController = storyboard!.instantiateViewController(withIdentifier: "MainTabBarController")
@@ -58,11 +67,15 @@ class LogInViewController: UIViewController {
   }
   
   @IBAction func unwindToLogInViewController(segue: UIStoryboardSegue) {
-    guard segue.identifier == "creteAccount" else { return }
-    let sourceViewController = segue.source as! SignUpViewController
-    
-    emailTextField.text = sourceViewController.emailTextField.text
-    passwordTextField.text = sourceViewController.passwordTextField.text
+    guard segue.identifier == "createAccount" || segue.identifier == "forgotPassword" else { return }
+    if let sourceViewController = segue.source as? SignUpViewController {
+      emailTextField.text = sourceViewController.emailTextField.text
+      passwordTextField.text = sourceViewController.passwordTextField.text
+    } else {
+      let sourceViewController = segue.source as! ForgotPasswordViewController
+      emailTextField.text = sourceViewController.emailTextField.text
+      passwordTextField.text = sourceViewController.passwordTextField.text
+    }
     updateLogInButtonState()
   }
 }

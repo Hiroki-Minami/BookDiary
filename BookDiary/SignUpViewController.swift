@@ -18,11 +18,13 @@ class SignUpViewController: UIViewController {
   
   @IBOutlet var doneButton: UIButton!
   
+  @IBOutlet var alertTextView: UITextView!
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
     // Do any additional setup after loading the view.
+    alertTextView.isHidden = false
     updateDoneButtonState()
   }
   
@@ -43,6 +45,8 @@ class SignUpViewController: UIViewController {
     
     for user in users {
       if emailTextField.text! == user.email {
+        alertTextView.isHidden = false
+        alertTextView.text = "There is already a user using the email address."
         return false
       }
     }
@@ -50,11 +54,18 @@ class SignUpViewController: UIViewController {
   }
   
   func validatePassword() -> Bool {
-    return passwordTextField.text! == passwordConfirmTextField.text!
+    if passwordTextField.text! == passwordConfirmTextField.text! {
+      return true
+    } else {
+      alertTextView.isHidden = false
+      alertTextView.text = "2 passwords are different. Write same password."
+      return false
+    }
   }
   
-  @IBAction func doneButtonTapped(_ sender: UIButton) {
-    guard validate() else { return }
+  override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+    alertTextView.isHidden = true
+    guard validate() else { return false }
     
     let newUser = User(firstName: firstNameTextField.text!, lastName: lastNameTextField.text!, userName: nicknameTextField.text!, passWord: passwordTextField.text!, email: emailTextField.text!, userSetting: UserSetting())
     
@@ -64,5 +75,6 @@ class SignUpViewController: UIViewController {
     } else {
       User.saveUsers([newUser])
     }
+    return true
   }
 }
