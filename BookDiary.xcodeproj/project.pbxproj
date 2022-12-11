@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		600924F7294542EC005D1F56 /* GenreListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600924F6294542EC005D1F56 /* GenreListTableViewController.swift */; };
+		600924F9294542FB005D1F56 /* LanguageListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600924F8294542FB005D1F56 /* LanguageListTableViewController.swift */; };
 		6066F59A293D4D15005F83B2 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6066F599293D4D15005F83B2 /* Post.swift */; };
 		6066F59C293D5256005F83B2 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6066F59B293D5256005F83B2 /* Enums.swift */; };
 		6066F59E293D61D5005F83B2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6066F59D293D61D5005F83B2 /* User.swift */; };
@@ -27,6 +29,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		600924F6294542EC005D1F56 /* GenreListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreListTableViewController.swift; sourceTree = "<group>"; };
+		600924F8294542FB005D1F56 /* LanguageListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageListTableViewController.swift; sourceTree = "<group>"; };
 		6066F599293D4D15005F83B2 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		6066F59B293D5256005F83B2 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		6066F59D293D61D5005F83B2 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -64,6 +68,8 @@
 			children = (
 				60A1749C2941BEC500490E55 /* MyShelfTableViewController.swift */,
 				60E5258729440F9100A3DE17 /* MyShelfDetailTableViewController.swift */,
+				600924F6294542EC005D1F56 /* GenreListTableViewController.swift */,
+				600924F8294542FB005D1F56 /* LanguageListTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -209,6 +215,7 @@
 				6066F59C293D5256005F83B2 /* Enums.swift in Sources */,
 				60A1749D2941BEC500490E55 /* MyShelfTableViewController.swift in Sources */,
 				6066F5A0293D76E0005F83B2 /* Poster.swift in Sources */,
+				600924F7294542EC005D1F56 /* GenreListTableViewController.swift in Sources */,
 				60E5258B2944638700A3DE17 /* StarRatingView.swift in Sources */,
 				94770669293AC9D700CFA877 /* ViewController.swift in Sources */,
 				6066F59A293D4D15005F83B2 /* Post.swift in Sources */,
@@ -216,6 +223,7 @@
 				60A1749B2941BEA700490E55 /* MyShelfTableViewCell.swift in Sources */,
 				94770665293AC9D700CFA877 /* AppDelegate.swift in Sources */,
 				94770667293AC9D700CFA877 /* SceneDelegate.swift in Sources */,
+				600924F9294542FB005D1F56 /* LanguageListTableViewController.swift in Sources */,
 				60A1749929414F0100490E55 /* FileManager+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
