@@ -8,7 +8,7 @@
 import UIKit
 
 class MyShelfTableViewController: UITableViewController, MyShelfCellDelegate {
-
+    
   var posts = [Post]()
   
   override func viewDidLoad() {
@@ -58,7 +58,7 @@ class MyShelfTableViewController: UITableViewController, MyShelfCellDelegate {
       let post = posts[indexPath.row]
       let url = Setting.browser.rawValue + post.title
       if let url = URL(string: url) {
-          UIApplication.shared.open(url)
+        UIApplication.shared.open(url)
       }
     }
   }
@@ -67,9 +67,46 @@ class MyShelfTableViewController: UITableViewController, MyShelfCellDelegate {
     if let indexPath = tableView.indexPath(for: sender) {
       var post = posts[indexPath.row]
       post.isComplete.toggle()
+      if post.isComplete {
+        post.rates = ratingBookAlert()
+      }
       posts[indexPath.row] = post
       tableView.reloadRows(at: [indexPath], with: .automatic)
     }
+  }
+  
+  func ratingBookAlert () -> Float {
+    let alertController = UIAlertController(title: "Rate The Book", message: "Tap the star to rate it.", preferredStyle: .alert)
+    
+    let starRatingViewContainer = UIView()
+    let starRatingView = StarRatingView()
+    starRatingViewContainer.addSubview(starRatingView)
+    alertController.view.addSubview(starRatingViewContainer)
+    
+    alertController.view.translatesAutoresizingMaskIntoConstraints = false
+    alertController.view.heightAnchor.constraint(equalToConstant: 200).isActive = true
+    
+    starRatingViewContainer.translatesAutoresizingMaskIntoConstraints = false
+    starRatingViewContainer.topAnchor.constraint(equalTo: alertController.view.topAnchor, constant: 40).isActive = true
+    starRatingViewContainer.rightAnchor.constraint(equalTo: alertController.view.rightAnchor, constant: -15).isActive = true
+    starRatingViewContainer.leftAnchor.constraint(equalTo: alertController.view.leftAnchor, constant: 15).isActive = true
+    starRatingViewContainer.bottomAnchor.constraint(equalTo: alertController.view.bottomAnchor, constant: -40).isActive = true
+    
+    starRatingView.translatesAutoresizingMaskIntoConstraints = false
+    starRatingView.topAnchor.constraint(equalTo: starRatingViewContainer.topAnchor, constant: 0).isActive = true
+    starRatingView.rightAnchor.constraint(equalTo: starRatingViewContainer.rightAnchor, constant: 0).isActive = true
+    starRatingView.leftAnchor.constraint(equalTo: starRatingViewContainer.leftAnchor, constant: 0).isActive = true
+    starRatingView.bottomAnchor.constraint(equalTo: starRatingViewContainer.bottomAnchor, constant: 0).isActive = true
+    
+    let okAction = UIAlertAction(title: "Done", style: .default) { [unowned alertController] _ in
+//      let phone = alertController.textFields?[0].text
+//      print(phone)
+    }
+    alertController.addAction(okAction)
+    let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+    alertController.addAction(cancelAction)
+    present(alertController, animated: true)
+    return 3.0
   }
   
   // MARK: - Table view data source

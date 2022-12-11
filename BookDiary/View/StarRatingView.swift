@@ -8,7 +8,7 @@
 import UIKit
 
 protocol RatingViewDelegate {
-    func updateRatingFormatValue(_ value: Float)
+  func updateRatingFormatValue(_ value: Float)
 }
 
 @IBDesignable
@@ -42,9 +42,9 @@ class StarRatingView: UIView {
   @IBInspectable
   var ratingValue: Float = 0.0 {
     didSet {
-        updateViewAppearance(ratingValue)
+      updateViewAppearance(ratingValue)
     }
-}
+  }
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -88,51 +88,51 @@ class StarRatingView: UIView {
   }
   
   func updateViewAppearance(_ xPoint: Float) {
-      var tag = 0
-      for imageView in imageViewList {
-          let imageViewX = Int(imageView.frame.origin.x)
-          if Int(xPoint) > imageViewX {
-              if Int(xPoint) == tag {
-                  imageView.image = emptyImage
-              } else {
-                  imageView.image = fillImage
-                  tag = tag + 1
-              }
-          } else {
-              imageView.image = emptyImage
-          }
+    var tag = 0
+    for imageView in imageViewList {
+      let imageViewX = Int(imageView.frame.origin.x)
+      if Int(xPoint) > imageViewX {
+        if Int(xPoint) == tag {
+          imageView.image = emptyImage
+        } else {
+          imageView.image = fillImage
+          tag = tag + 1
+        }
+      } else {
+        imageView.image = emptyImage
       }
+    }
     updateRating(Float(tag))
   }
   
   // MARK: - UITouch Delegate
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     if let touch = touches.first {
-        let currentPoint = touch.location(in: self)
-        updateViewAppearance(Float(currentPoint.x))
+      let currentPoint = touch.location(in: self)
+      updateViewAppearance(Float(currentPoint.x))
     }
   }
   
   override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
     if let touch = touches.first {
-        let currentPoint = touch.location(in: self)
-        updateViewAppearance(Float(currentPoint.x))
+      let currentPoint = touch.location(in: self)
+      updateViewAppearance(Float(currentPoint.x))
     }
   }
   
   override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
     if let touch = touches.first {
-        let currentPoint = touch.location(in: self)
-        updateViewAppearance(Float(currentPoint.x))
+      let currentPoint = touch.location(in: self)
+      updateViewAppearance(Float(currentPoint.x))
     }
   }
   
   
   //MARK: - Delegate
   func updateRating(_ value: Float) {
-      if delegate != nil {
-          delegate.updateRatingFormatValue(value)
-      }
+    if delegate != nil {
+      delegate.updateRatingFormatValue(value)
+    }
   }
   
 }
