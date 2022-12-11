@@ -50,6 +50,8 @@ class MyShelfDetailTableViewController: UITableViewController, RatingViewDelegat
       reviewTextView.text = post.review!
       languageLabel.text = post.language.rawValue
       genreLabel.text = post.genres!.rawValue
+      language = post.language
+      genre = post.genres
     }
     languageCountLabel.text = String(Language.allCases.count)
     genreCountLabel.text = String(Genres.allCases.count)

@@ -18,7 +18,6 @@ class LanguageListTableViewController: UITableViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    print("language = \(language)")
   }
   
   // MARK: - Table view data source

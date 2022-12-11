@@ -18,8 +18,6 @@ class GenreListTableViewController: UITableViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    print("genre = \(genre)")
-
   }
   
   // MARK: - Table view data source
