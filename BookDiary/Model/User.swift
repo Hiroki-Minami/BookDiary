@@ -10,10 +10,12 @@ import Foundation
 
 /// For login and setting
 class User: Codable {
+  
+  static var currentUser: User?
+  
   var firstName: String
   var lastName: String
   var nickName: String?
-  var userName: String
   var passWord: String
   var email: String
   var userSetting: UserSetting
@@ -24,7 +26,6 @@ class User: Codable {
     self.firstName = firstName
     self.lastName = lastName
     self.nickName = nickName
-    self.userName = userName
     self.passWord = passWord
     self.email = email
     self.userSetting = userSetting

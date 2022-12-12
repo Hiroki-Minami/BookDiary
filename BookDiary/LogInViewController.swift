@@ -62,6 +62,7 @@ class LogInViewController: UIViewController {
     guard validateLogIn() else { return }
     
     let mainTabBarController = storyboard!.instantiateViewController(withIdentifier: "MainTabBarController")
+    User.currentUser = user
     
     (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(mainTabBarController)
   }
