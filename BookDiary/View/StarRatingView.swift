@@ -59,7 +59,6 @@ class StarRatingView: UIView {
   
   // MARK: - View
   func updateView() {
-    print(#function)
     imageViewList.removeAll()
     subviews.forEach{ view in
       view.removeFromSuperview()
