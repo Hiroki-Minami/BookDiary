@@ -17,6 +17,7 @@ class MyShelfDetailTableViewController: UITableViewController, RatingViewDelegat
   @IBOutlet weak var languageCountLabel: UILabel!
   @IBOutlet weak var genreLabel: UILabel!
   @IBOutlet weak var genreCountLabel: UILabel!
+  @IBOutlet weak var saveButton: UIBarButtonItem!
   
   var post: Post?
   var rates: Float = 0.0
@@ -25,8 +26,9 @@ class MyShelfDetailTableViewController: UITableViewController, RatingViewDelegat
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    updateView()
     ratesView.delegate = self
+    updateView()
+    updateSaveButtonState()
   }
   
   @IBSegueAction func selectLanguage(_ coder: NSCoder, sender: Any?) -> LanguageListTableViewController? {
@@ -39,6 +41,14 @@ class MyShelfDetailTableViewController: UITableViewController, RatingViewDelegat
     let detailController = GenreListTableViewController(coder: coder)
     detailController?.genre = Genres(rawValue: genreLabel.text!)
     return detailController
+  }
+  
+  @IBAction func titleEditingChanged(_ sender: Any) {
+    updateSaveButtonState()
+  }
+  
+  @IBAction func autherEditingChanged(_ sender: Any) {
+    updateSaveButtonState()
   }
   
   func updateView() {
@@ -57,6 +67,18 @@ class MyShelfDetailTableViewController: UITableViewController, RatingViewDelegat
     genreCountLabel.text = String(Genres.allCases.count)
   }
   
+  func updateSaveButtonState() {
+    let notYet = "Not Yet"
+    let shouldEnableSaveButton =
+      (titleTextField.text?.isEmpty == false) &&
+      (AutherTextField.text?.isEmpty == false) &&
+      (languageLabel.text?.isEmpty == false) &&
+      !notYet.contains(languageLabel.text!) &&
+      (genreLabel.text?.isEmpty == false) &&
+      !notYet.contains(genreLabel.text!)
+    saveButton.isEnabled = shouldEnableSaveButton
+  }
+  
   // MARK: - Delegate
   func updateRatingFormatValue(_ value: Float) {
     rates = value
@@ -65,11 +87,13 @@ class MyShelfDetailTableViewController: UITableViewController, RatingViewDelegat
   func didSelect(language: Language) {
     self.language = language
     languageLabel.text = language.rawValue
+    updateSaveButtonState()
   }
   
   func didSelect(genre: Genres) {
     self.genre = genre
     genreLabel.text = genre.rawValue
+    updateSaveButtonState()
   }
   
   // MARK: -
