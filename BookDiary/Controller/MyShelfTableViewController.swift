@@ -10,19 +10,21 @@ import UIKit
 class MyShelfTableViewController: UITableViewController, MyShelfCellDelegate {
     
   var posts = [Post]()
+  var otherPosts = [Post]()
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
     navigationItem.leftBarButtonItem = editButtonItem
-    
+
     if let savedPosts = Post.loadPosts() {
       posts = savedPosts
     } else {
       posts = Post.loadSamplePosts()
       Post.savePosts(posts)
     }
-    
+    otherPosts = posts.filter{ post in post.poster.nickName != "Quien" }
+    posts = posts.filter{ post in post.poster.nickName == "Quien" }
   }
   
   @IBSegueAction func editPost(_ coder: NSCoder, sender: Any?) -> MyShelfDetailTableViewController? {
@@ -50,6 +52,9 @@ class MyShelfTableViewController: UITableViewController, MyShelfCellDelegate {
         tableView.insertRows(at: [newIndexPath], with: .automatic)
       }
     }
+    Post.savePosts(posts+otherPosts)
+    print(posts.count)
+    print(otherPosts.count)
   }
   
   // MARK: -
@@ -72,6 +77,7 @@ class MyShelfTableViewController: UITableViewController, MyShelfCellDelegate {
       }
       posts[indexPath.row] = post
       tableView.reloadRows(at: [indexPath], with: .automatic)
+      Post.savePosts(posts+otherPosts)
     }
   }
   
@@ -129,6 +135,7 @@ class MyShelfTableViewController: UITableViewController, MyShelfCellDelegate {
     if editingStyle == .delete {
       posts.remove(at: indexPath.row)
       tableView.deleteRows(at: [indexPath], with: .automatic)
+      Post.savePosts(posts+otherPosts)
     }
   }
 }

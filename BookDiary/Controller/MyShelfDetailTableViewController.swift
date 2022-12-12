@@ -111,7 +111,7 @@ class MyShelfDetailTableViewController: UITableViewController, RatingViewDelegat
         post?.language = language!
         post?.genres = genre!
       } else {
-        post = Post(title: title, author: auther, rates: rates, language: Language.English, genres: Genres(rawValue: genre!.rawValue), review: review, postedDate: Date(), poster: Poster(firstName: "Quien"))
+        post = Post(title: title, author: auther, rates: rates, language: Language.English, genres: Genres(rawValue: genre!.rawValue), review: review, postedDate: Date(), poster: Poster(firstName: "Quien", nickName: "Quien"))
       }
     } else if segue.identifier == "selectLanguage" {
         let destinationViewController = segue.destination as? LanguageListTableViewController
