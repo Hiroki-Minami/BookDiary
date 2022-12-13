@@ -18,6 +18,7 @@ class SettingTableViewController: UITableViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    // TODO: get current user
     self.user = User(firstName: "test", lastName: "test", userName: "test", passWord: "test", email: "test@gmail.com", userSetting: UserSetting())
     
     let closure = { (action: UIAction) in
@@ -32,14 +33,17 @@ class SettingTableViewController: UITableViewController {
     browserButton.showsMenuAsPrimaryAction = true
   }
   
+  @IBAction func unwindToSettingViewController(segue: UIStoryboardSegue) {
+    guard segue.identifier == "changeAccountInfo" else { return }
+    let sourceViewController = segue.source as! AccountTableViewController
+    
+    self.user = sourceViewController.user
+  }
+  
   @IBSegueAction func goToAccountTableViewController(_ coder: NSCoder) -> UITableViewController? {
     let atvc =  AccountTableViewController(coder: coder)
     atvc?.user = self.user
     
     return atvc
-  }
-  
-  @IBAction func unwindSetting(segue: UIStoryboardSegue) {
-    
   }
 }
