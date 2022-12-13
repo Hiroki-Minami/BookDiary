@@ -14,6 +14,11 @@
 		606D7C1C293FE18300F4E558 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 606D7C1B293FE18300F4E558 /* .gitignore */; };
 		60A1749629413D7800490E55 /* Settiing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A1749529413D7800490E55 /* Settiing.swift */; };
 		60A1749929414F0100490E55 /* FileManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A1749829414F0100490E55 /* FileManager+Extensions.swift */; };
+		9405128F294422030016A950 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9405128E294422030016A950 /* SettingTableViewController.swift */; };
+		94051293294451060016A950 /* AccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94051292294451060016A950 /* AccountTableViewController.swift */; };
+		941868DA2940024600974DEE /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941868D92940024600974DEE /* SearchTableViewController.swift */; };
+		941868DC2940043700974DEE /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941868DB2940043700974DEE /* SearchTableViewCell.swift */; };
+		941868E02940492300974DEE /* SearchFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941868DF2940492300974DEE /* SearchFilterViewController.swift */; };
 		94770665293AC9D700CFA877 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94770664293AC9D700CFA877 /* AppDelegate.swift */; };
 		94770667293AC9D700CFA877 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94770666293AC9D700CFA877 /* SceneDelegate.swift */; };
 		94770669293AC9D700CFA877 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94770668293AC9D700CFA877 /* ViewController.swift */; };
@@ -35,6 +40,11 @@
 		606D7C1B293FE18300F4E558 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		60A1749529413D7800490E55 /* Settiing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settiing.swift; sourceTree = "<group>"; };
 		60A1749829414F0100490E55 /* FileManager+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extensions.swift"; sourceTree = "<group>"; };
+		9405128E294422030016A950 /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
+		94051292294451060016A950 /* AccountTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewController.swift; sourceTree = "<group>"; };
+		941868D92940024600974DEE /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
+		941868DB2940043700974DEE /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		941868DF2940492300974DEE /* SearchFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFilterViewController.swift; sourceTree = "<group>"; };
 		94770661293AC9D700CFA877 /* BookDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94770664293AC9D700CFA877 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94770666293AC9D700CFA877 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -111,7 +121,12 @@
 				F5A52C912943F9E0006C3038 /* EachBookViewController.swift */,
 				F5A52C8929420A8B006C3038 /* UserTableViewController.swift */,
 				F5A52C8F29434546006C3038 /* UserDetailCell.swift */,
+				941868D92940024600974DEE /* SearchTableViewController.swift */,
+				941868DB2940043700974DEE /* SearchTableViewCell.swift */,
+				941868DF2940492300974DEE /* SearchFilterViewController.swift */,
 				9477066A293AC9D700CFA877 /* Main.storyboard */,
+				9405128E294422030016A950 /* SettingTableViewController.swift */,
+				94051292294451060016A950 /* AccountTableViewController.swift */,
 				9477066D293AC9D800CFA877 /* Assets.xcassets */,
 				9477066F293AC9D800CFA877 /* LaunchScreen.storyboard */,
 				94770672293AC9D800CFA877 /* Info.plist */,
@@ -192,6 +207,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				60A1749629413D7800490E55 /* Settiing.swift in Sources */,
+				9405128F294422030016A950 /* SettingTableViewController.swift in Sources */,
+				94051293294451060016A950 /* AccountTableViewController.swift in Sources */,
 				6066F59E293D61D5005F83B2 /* User.swift in Sources */,
 				F5A52C8A29420A8B006C3038 /* UserTableViewController.swift in Sources */,
 				6066F59C293D5256005F83B2 /* Enums.swift in Sources */,
@@ -203,6 +220,9 @@
 				6066F59A293D4D15005F83B2 /* Post.swift in Sources */,
 				94770665293AC9D700CFA877 /* AppDelegate.swift in Sources */,
 				94770667293AC9D700CFA877 /* SceneDelegate.swift in Sources */,
+				941868DA2940024600974DEE /* SearchTableViewController.swift in Sources */,
+				941868E02940492300974DEE /* SearchFilterViewController.swift in Sources */,
+				941868DC2940043700974DEE /* SearchTableViewCell.swift in Sources */,
 				60A1749929414F0100490E55 /* FileManager+Extensions.swift in Sources */,
 				F5A52C8629417CBA006C3038 /* HomeBookCellTableViewCell.swift in Sources */,
 			);
