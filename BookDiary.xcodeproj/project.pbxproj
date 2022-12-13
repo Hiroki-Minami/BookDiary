@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		600924F7294542EC005D1F56 /* GenreListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600924F6294542EC005D1F56 /* GenreListTableViewController.swift */; };
-		600924F9294542FB005D1F56 /* LanguageListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600924F8294542FB005D1F56 /* LanguageListTableViewController.swift */; };
 		6066F59A293D4D15005F83B2 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6066F599293D4D15005F83B2 /* Post.swift */; };
 		6066F59C293D5256005F83B2 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6066F59B293D5256005F83B2 /* Enums.swift */; };
 		6066F59E293D61D5005F83B2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6066F59D293D61D5005F83B2 /* User.swift */; };
@@ -30,7 +29,6 @@
 
 /* Begin PBXFileReference section */
 		600924F6294542EC005D1F56 /* GenreListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreListTableViewController.swift; sourceTree = "<group>"; };
-		600924F8294542FB005D1F56 /* LanguageListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageListTableViewController.swift; sourceTree = "<group>"; };
 		6066F599293D4D15005F83B2 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		6066F59B293D5256005F83B2 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		6066F59D293D61D5005F83B2 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -69,7 +67,6 @@
 				60A1749C2941BEC500490E55 /* MyShelfTableViewController.swift */,
 				60E5258729440F9100A3DE17 /* MyShelfDetailTableViewController.swift */,
 				600924F6294542EC005D1F56 /* GenreListTableViewController.swift */,
-				600924F8294542FB005D1F56 /* LanguageListTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -123,10 +120,10 @@
 		94770663293AC9D700CFA877 /* BookDiary */ = {
 			isa = PBXGroup;
 			children = (
-				600924F129452FFE005D1F56 /* Controller */,
-				60E525892944631500A3DE17 /* View */,
 				60A1749729414EC500490E55 /* Extensions */,
 				60F8D49F293BBD2B00CCADF9 /* Model */,
+				60E525892944631500A3DE17 /* View */,
+				600924F129452FFE005D1F56 /* Controller */,
 				94770664293AC9D700CFA877 /* AppDelegate.swift */,
 				94770666293AC9D700CFA877 /* SceneDelegate.swift */,
 				94770668293AC9D700CFA877 /* ViewController.swift */,
@@ -223,7 +220,6 @@
 				60A1749B2941BEA700490E55 /* MyShelfTableViewCell.swift in Sources */,
 				94770665293AC9D700CFA877 /* AppDelegate.swift in Sources */,
 				94770667293AC9D700CFA877 /* SceneDelegate.swift in Sources */,
-				600924F9294542FB005D1F56 /* LanguageListTableViewController.swift in Sources */,
 				60A1749929414F0100490E55 /* FileManager+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
