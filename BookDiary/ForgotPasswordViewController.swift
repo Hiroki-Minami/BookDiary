@@ -38,7 +38,11 @@ class ForgotPasswordViewController: UIViewController {
   
   func validate() -> Bool {
     // usercheck
-    guard let users = User.loadUsers() else { return false }
+    guard let users = User.loadUsers() else {
+      alertTextView.isHidden = false
+      alertTextView.text = "There is no user Create a user."
+      return false
+    }
     
     for user in users {
       if emailTextField.text! == user.email {
@@ -67,7 +71,7 @@ class ForgotPasswordViewController: UIViewController {
     guard var users = User.loadUsers() else { return false }
     for (index, user) in users.enumerated() {
       if emailTextField.text! == user.email {
-        let newUser = User(firstName: user.firstName, lastName: user.lastName, userName: user.nickName ?? "", passWord: passwordTextField.text!, email: emailTextField.text!, userSetting: user.userSetting)
+        let newUser = User(firstName: user.firstName, lastName: user.lastName, nickName: user.nickName ?? "", passWord: passwordTextField.text!, email: emailTextField.text!, userSetting: user.userSetting)
         
         users[index] = newUser
       }

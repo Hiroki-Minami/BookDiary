@@ -22,7 +22,7 @@ class User: Codable {
   
   private static let archiveURL = FileManager.pathToDoucumentsDirectory(with: "users")
   
-  init(firstName: String, lastName: String, nickName: String? = nil, userName: String, passWord: String, email: String, userSetting: UserSetting) {
+  init(firstName: String, lastName: String, nickName: String? = nil, passWord: String, email: String, userSetting: UserSetting) {
     self.firstName = firstName
     self.lastName = lastName
     self.nickName = nickName

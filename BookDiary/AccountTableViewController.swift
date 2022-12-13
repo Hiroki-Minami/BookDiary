@@ -28,7 +28,7 @@ class AccountTableViewController: UITableViewController {
     
     firstNameTextField.text = user?.firstName
     lastNameTextField.text = user?.lastName
-    nicknameTextField.text = user?.userName
+    nicknameTextField.text = user?.nickName
     emailTextField.text = user?.email
     passwordTextField.text = user?.passWord
     passwordConfirmTextField.text = user?.passWord
@@ -54,7 +54,7 @@ class AccountTableViewController: UITableViewController {
   
   override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
     if validateUserInfo() {
-      user = User(firstName: firstNameTextField.text!, lastName: lastNameTextField.text!, userName: nicknameTextField.text!, passWord: passwordTextField.text!, email: emailTextField.text!, userSetting: user!.userSetting)
+      self.user = User(firstName: firstNameTextField.text!, lastName: lastNameTextField.text!, nickName: nicknameTextField.text!, passWord: passwordTextField.text!, email: emailTextField.text!, userSetting: user!.userSetting)
       
       var users = User.loadUsers()!
       users[userIndex!] = user!
@@ -73,6 +73,8 @@ class AccountTableViewController: UITableViewController {
         if eachUser.email == emailTextField.text! {
           // TODO: show alert message
           let alertController = UIAlertController(title: "This email is already used by someone.", message: nil, preferredStyle: .alert)
+          let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+          alertController.addAction(cancelAction)
           present(alertController, animated: true)
           return false
         }
@@ -88,6 +90,8 @@ class AccountTableViewController: UITableViewController {
       return true
     } else {
       let alertController = UIAlertController(title: "This email is already used by someone.", message: nil, preferredStyle: .alert)
+      let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+      alertController.addAction(cancelAction)
       present(alertController, animated: true)
       return false
     }
