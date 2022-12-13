@@ -19,17 +19,30 @@ class SettingTableViewController: UITableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     // TODO: get current user
-    self.user = User(firstName: "test", lastName: "test", userName: "test", passWord: "test", email: "test@gmail.com", userSetting: UserSetting())
+    self.user = User.currentUser
     
     let closure = { (action: UIAction) in
       guard let currentUser = self.user else { return }
       currentUser.userSetting.browser = Browsers.getInstance(name: action.title)
       // save setting
+      guard var users = User.loadUsers() else { return }
+      for (index, eachUser) in users.enumerated() {
+        if eachUser.email == self.user!.email {
+          users[index] = currentUser
+        }
+      }
+      User.saveUsers(users)
     }
-    browserButton.menu = UIMenu(children: [
-      UIAction(title: "\(Browsers.Google)", handler: closure),
-      UIAction(title: "\(Browsers.Amazon)", handler: closure)
-    ])
+    
+    let google = UIAction(title: "\(Browsers.Google)", handler: closure)
+    let amazon = UIAction(title: "\(Browsers.Amazon)", handler: closure)
+    if user?.userSetting.browser == .Google {
+      google.state = .on
+    } else {
+      amazon.state = .on
+    }
+                          
+    browserButton.menu = UIMenu(children: [google, amazon])
     browserButton.showsMenuAsPrimaryAction = true
   }
   

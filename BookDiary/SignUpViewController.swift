@@ -67,7 +67,7 @@ class SignUpViewController: UIViewController {
     alertTextView.isHidden = true
     guard validate() else { return false }
     
-    let newUser = User(firstName: firstNameTextField.text!, lastName: lastNameTextField.text!, userName: nicknameTextField.text!, passWord: passwordTextField.text!, email: emailTextField.text!, userSetting: UserSetting())
+    let newUser = User(firstName: firstNameTextField.text!, lastName: lastNameTextField.text!, nickName: nicknameTextField.text!, passWord: passwordTextField.text!, email: emailTextField.text!, userSetting: UserSetting())
     
     if var users = User.loadUsers() {
       users.append(newUser)
