@@ -7,17 +7,32 @@
 
 import UIKit
 
+
 class HomeBookCellTableViewCell: UITableViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
+  
+  @IBOutlet var titleButton: UIButton!
+  @IBOutlet var userButton: UIButton!
+  
+  var delegate: HomeTableViewControllerDelegate?
+  var post: Post?
+  
+  override func awakeFromNib() {
+    super.awakeFromNib()
         // Initialization code
-    }
+  }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
+  override func setSelected(_ selected: Bool, animated: Bool) {
+    super.setSelected(selected, animated: animated)
+    
         // Configure the view for the selected state
-    }
-
+  }
+  
+  @IBAction func titleButtonTapped(_ sender: UIButton) {
+    delegate?.titleButtonTapped(self)
+  }
+  
+  
 }
+
+
+
