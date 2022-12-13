@@ -57,7 +57,6 @@
                                                             <connections>
                                                                 <action selector="homeTitleButton:" destination="u5z-aU-ZSl" eventType="touchUpInside" id="SJV-Ew-p1K"/>
                                                                 <action selector="titleButtonTapped:" destination="dpL-PE-ejL" eventType="touchUpInside" id="DTB-ts-YDP"/>
-                                                                <segue destination="H0y-BX-ugY" kind="show" identifier="toEachBook" destinationCreationSelector="eachBookDetail:sender:" id="tAm-ul-TLn"/>
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EbW-lI-o9n">
@@ -169,6 +168,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Home" largeTitleDisplayMode="always" id="kUD-mV-jyz"/>
+                    <connections>
+                        <segue destination="H0y-BX-ugY" kind="show" identifier="toEachBook" id="1cz-HG-sYf"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="naj-5M-K86" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="u5z-aU-ZSl" userLabel="Exit" sceneMemberID="exit"/>
@@ -862,14 +864,14 @@
                             <tableViewSection headerTitle="ACCOUNT" id="Uax-D6-0DA">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Seg-hj-uIc">
-                                        <rect key="frame" x="0.0" y="50" width="393" height="74.666664123535156"/>
+                                        <rect key="frame" x="0.0" y="50" width="393" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Seg-hj-uIc" id="nMg-dC-DrH">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="74.666664123535156"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="75"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="isO-aN-skn">
-                                                    <rect key="frame" x="20" y="19.999999999999996" width="353" height="34.666666666666657"/>
+                                                    <rect key="frame" x="20" y="20" width="353" height="35"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" title="Detail"/>
                                                     <connections>
@@ -890,14 +892,14 @@
                             <tableViewSection headerTitle="BROWSE" id="fmn-kW-eGh">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="zIx-io-k5M">
-                                        <rect key="frame" x="0.0" y="202.66666412353516" width="393" height="75.333335876464844"/>
+                                        <rect key="frame" x="0.0" y="203" width="393" height="74.666664123535156"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zIx-io-k5M" id="elr-RQ-zA0">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="75.333335876464844"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="74.666664123535156"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9eD-hl-v23">
-                                                    <rect key="frame" x="20" y="20.000000000000004" width="353" height="35.333333333333343"/>
+                                                    <rect key="frame" x="20" y="19.999999999999996" width="353" height="34.666666666666657"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" image="chevron.right.square" catalog="system"/>
                                                 </button>
@@ -1286,14 +1288,14 @@
                             <tableViewSection id="t5c-3H-sUa">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="1Vt-Lj-9sv">
-                                        <rect key="frame" x="0.0" y="94" width="393" height="28"/>
+                                        <rect key="frame" x="0.0" y="94" width="393" height="28.333333969116211"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1Vt-Lj-9sv" id="DJP-5Z-dwg">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="28"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="28.333333969116211"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="igm-li-1lq">
-                                                    <rect key="frame" x="8" y="0.0" width="28" height="28"/>
+                                                    <rect key="frame" x="8" y="0.0" width="28" height="28.333333333333332"/>
                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                     <state key="normal" image="circle" catalog="system">
                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="24"/>
