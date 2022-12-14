@@ -11,25 +11,43 @@ class SettingTableViewController: UITableViewController {
   
   var user: User?
   
-//  let accountDetailIndexPath = IndexPath(row: 0, section: 0)
-//  let browseDetailIndexPath = IndexPath(row: 0, section: 1)
-  
   @IBOutlet var browserButton: UIButton!
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.user = User(firstName: "test", lastName: "test", userName: "test", passWord: "test", email: "test@gmail.com", userSetting: UserSetting())
+    // TODO: get current user
+    self.user = User.currentUser
     
     let closure = { (action: UIAction) in
       guard let currentUser = self.user else { return }
       currentUser.userSetting.browser = Browsers.getInstance(name: action.title)
       // save setting
+      guard var users = User.loadUsers() else { return }
+      for (index, eachUser) in users.enumerated() {
+        if eachUser.email == self.user!.email {
+          users[index] = currentUser
+        }
+      }
+      User.saveUsers(users)
     }
-    browserButton.menu = UIMenu(children: [
-      UIAction(title: "\(Browsers.Google)", handler: closure),
-      UIAction(title: "\(Browsers.Amazon)", handler: closure)
-    ])
+    
+    let google = UIAction(title: "\(Browsers.Google)", handler: closure)
+    let amazon = UIAction(title: "\(Browsers.Amazon)", handler: closure)
+    if user?.userSetting.browser == .Google {
+      google.state = .on
+    } else {
+      amazon.state = .on
+    }
+                          
+    browserButton.menu = UIMenu(children: [google, amazon])
     browserButton.showsMenuAsPrimaryAction = true
+  }
+  
+  @IBAction func unwindToSettingViewController(segue: UIStoryboardSegue) {
+    guard segue.identifier == "changeAccountInfo" else { return }
+    let sourceViewController = segue.source as! AccountTableViewController
+    
+    self.user = sourceViewController.user
   }
   
   @IBSegueAction func goToAccountTableViewController(_ coder: NSCoder) -> UITableViewController? {
@@ -39,7 +57,10 @@ class SettingTableViewController: UITableViewController {
     return atvc
   }
   
-  @IBAction func unwindSetting(segue: UIStoryboardSegue) {
+  @IBAction func logOutButtonTapped(_ sender: UIButton) {
+    let loginNavigationController = storyboard!.instantiateViewController(withIdentifier: "LoginNavigationController")
+    User.currentUser = nil
     
+    (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(loginNavigationController)
   }
 }

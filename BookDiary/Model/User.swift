@@ -10,21 +10,22 @@ import Foundation
 
 /// For login and setting
 class User: Codable {
+  
+  static var currentUser: User?
+  
   var firstName: String
   var lastName: String
   var nickName: String?
-  var userName: String
   var passWord: String
   var email: String
   var userSetting: UserSetting
   
   private static let archiveURL = FileManager.pathToDoucumentsDirectory(with: "users")
   
-  init(firstName: String, lastName: String, nickName: String? = nil, userName: String, passWord: String, email: String, userSetting: UserSetting) {
+  init(firstName: String, lastName: String, nickName: String? = nil, passWord: String, email: String, userSetting: UserSetting) {
     self.firstName = firstName
     self.lastName = lastName
     self.nickName = nickName
-    self.userName = userName
     self.passWord = passWord
     self.email = email
     self.userSetting = userSetting

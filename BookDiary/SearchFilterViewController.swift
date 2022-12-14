@@ -51,7 +51,8 @@ class SearchFilterViewController: UIViewController {
       horizontalStackView.translatesAutoresizingMaskIntoConstraints = false
       horizontalStackView.axis = .horizontal
       horizontalStackView.alignment = .fill
-      horizontalStackView.distribution = .fillEqually
+      horizontalStackView.distribution = .equalSpacing
+      horizontalStackView.heightAnchor.constraint(equalToConstant: 22).isActive = true
       
       genreStackView.addArrangedSubview(horizontalStackView)
     }

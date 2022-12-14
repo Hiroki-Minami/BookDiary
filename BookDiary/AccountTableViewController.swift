@@ -18,6 +18,9 @@ class AccountTableViewController: UITableViewController {
   @IBOutlet var passwordTextField: UITextField!
   @IBOutlet var passwordConfirmTextField: UITextField!
   
+  var previousEmail: String?
+  var userIndex: Int?
+  
   @IBOutlet var saveButton: UIBarButtonItem!
   
   override func viewDidLoad() {
@@ -25,10 +28,17 @@ class AccountTableViewController: UITableViewController {
     
     firstNameTextField.text = user?.firstName
     lastNameTextField.text = user?.lastName
-    nicknameTextField.text = user?.userName
+    nicknameTextField.text = user?.nickName
     emailTextField.text = user?.email
     passwordTextField.text = user?.passWord
     passwordConfirmTextField.text = user?.passWord
+    
+    for (index, savedUser) in User.loadUsers()!.enumerated() {
+      if savedUser.email == user?.email {
+        previousEmail = user?.email
+        self.userIndex = index
+      }
+    }
   }
   
   func changeSaveButtonStatus() {
@@ -43,30 +53,47 @@ class AccountTableViewController: UITableViewController {
   }
   
   override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-    return validateUserInfo()
+    if validateUserInfo() {
+      self.user = User(firstName: firstNameTextField.text!, lastName: lastNameTextField.text!, nickName: nicknameTextField.text!, passWord: passwordTextField.text!, email: emailTextField.text!, userSetting: user!.userSetting)
+      
+      var users = User.loadUsers()!
+      users[userIndex!] = user!
+      User.saveUsers(users)
+      
+      return true
+    }
+    return false
   }
   
   func validateUserInfo() -> Bool {
     guard let users = User.loadUsers() else { return false }
     
-    for eachUser in users {
-      
+    if previousEmail != emailTextField.text! {
+      for eachUser in users {
+        if eachUser.email == emailTextField.text! {
+          // TODO: show alert message
+          let alertController = UIAlertController(title: "This email is already used by someone.", message: nil, preferredStyle: .alert)
+          let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+          alertController.addAction(cancelAction)
+          present(alertController, animated: true)
+          return false
+        }
+      }
+      return true
+    } else {
+      return validatePassword()
     }
-    return false
   }
   
   func validatePassword() -> Bool {
-    return passwordTextField.text! == passwordConfirmTextField.text!
+    if passwordTextField.text! == passwordConfirmTextField.text! {
+      return true
+    } else {
+      let alertController = UIAlertController(title: "This email is already used by someone.", message: nil, preferredStyle: .alert)
+      let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+      alertController.addAction(cancelAction)
+      present(alertController, animated: true)
+      return false
+    }
   }
-  
-  /*
-   // MARK: - Navigation
-   
-   // In a storyboard-based application, you will often want to do a little preparation before navigation
-   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-   // Get the new view controller using segue.destination.
-   // Pass the selected object to the new view controller.
-   }
-   */
-  
 }

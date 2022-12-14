@@ -41,20 +41,13 @@ class SearchTableViewController: UITableViewController, searchTableViewCellDeleg
     shownPosts = allPosts.filter({
       let genres = genreIsShown.filter { $1 == true }
       let isDone = $0.isComplete
-      let flg = isDone ? completionIsShown[.complete]: completionIsShown[.incomplete]
+      let flg = isDone ? completionIsShown[.complete]!: completionIsShown[.incomplete]!
+      let postsGenre = $0.genres
       
-      if let postsGenre = $0.genres {
-        if let postsRate = $0.rates {
-          return genres.keys.contains(postsGenre) && flg! && postsRate > Float(rateFilter)
-        } else {
-          return genres.keys.contains(postsGenre) && flg!
-        }
+      if let postsRate = $0.rates {
+        return genres.keys.contains(postsGenre) && flg && postsRate >= Float(rateFilter)
       } else {
-        if let postsRate = $0.rates {
-          return flg! && postsRate > Float(rateFilter)
-        } else {
-          return flg!
-        }
+        return genres.keys.contains(postsGenre) && flg
       }
     })
     
