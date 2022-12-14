@@ -53,8 +53,6 @@ class MyShelfTableViewController: UITableViewController, MyShelfCellDelegate, Ra
       }
     }
     Post.savePosts(posts+otherPosts)
-    print(posts.count)
-    print(otherPosts.count)
   }
   
   // MARK: -

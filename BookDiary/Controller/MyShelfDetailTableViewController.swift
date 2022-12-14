@@ -7,10 +7,10 @@
 
 import UIKit
 
-class MyShelfDetailTableViewController: UITableViewController, RatingViewDelegate, GenreListDelegate {
+class MyShelfDetailTableViewController: UITableViewController, UITextFieldDelegate, RatingViewDelegate, GenreListDelegate {
   
   @IBOutlet weak var titleTextField: UITextField!
-  @IBOutlet weak var AutherTextField: UITextField!
+  @IBOutlet weak var autherTextField: UITextField!
   @IBOutlet weak var ratesView: StarRatingView!
   @IBOutlet weak var reviewTextView: UITextView!
   @IBOutlet weak var genreLabel: UILabel!
@@ -24,9 +24,16 @@ class MyShelfDetailTableViewController: UITableViewController, RatingViewDelegat
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    titleTextField.delegate = self
+    autherTextField.delegate = self
     ratesView.delegate = self
     updateView()
     updateSaveButtonState()
+    setEndEditing()
+  }
+  
+  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    view.endEditing(true)
   }
   
   @IBSegueAction func selectGenre(_ coder: NSCoder, sender: Any?) -> GenreListTableViewController? {
@@ -47,7 +54,7 @@ class MyShelfDetailTableViewController: UITableViewController, RatingViewDelegat
     if let post = post {
       navigationItem.title = "Edit Post"
       titleTextField.text = post.title
-      AutherTextField.text = post.author
+      autherTextField.text = post.author
       ratesView.ratingValue = post.rates!
       reviewTextView.text = post.review!
       genreLabel.text = post.genres.rawValue
@@ -60,12 +67,26 @@ class MyShelfDetailTableViewController: UITableViewController, RatingViewDelegat
     let notYet = "Not Yet"
     let shouldEnableSaveButton =
     (titleTextField.text?.isEmpty == false) &&
-    (AutherTextField.text?.isEmpty == false) &&
+    (autherTextField.text?.isEmpty == false) &&
     (genreLabel.text?.isEmpty == false) &&
     !notYet.contains(genreLabel.text!)
     saveButton.isEnabled = shouldEnableSaveButton
   }
   
+  // MARK: - textField & Keyboard
+  
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    titleTextField.resignFirstResponder()
+    autherTextField.resignFirstResponder()
+    return true
+  }
+  
+  func setEndEditing() {
+    let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+    tap.cancelsTouchesInView = false
+    view.addGestureRecognizer(tap)
+  }
+
   // MARK: - Delegate
   
   func updateRatingFormatValue(_ value: Float) {
@@ -78,12 +99,12 @@ class MyShelfDetailTableViewController: UITableViewController, RatingViewDelegat
     updateSaveButtonState()
   }
   
-  // MARK: -
+  // MARK: - Segue
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == "saveUnwind" {
       let title = titleTextField.text!
-      let auther = AutherTextField.text!
+      let auther = autherTextField.text!
       let review = reviewTextView.text
       
       if post != nil {
