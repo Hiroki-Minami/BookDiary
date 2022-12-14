@@ -606,14 +606,14 @@
                             <tableViewSection id="um3-QP-cMV">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="vfA-rt-SfZ">
-                                        <rect key="frame" x="0.0" y="50" width="393" height="28.333333969116211"/>
+                                        <rect key="frame" x="0.0" y="50" width="393" height="27.666666030883789"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vfA-rt-SfZ" id="PeV-ku-pqc">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="28.333333969116211"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="27.666666030883789"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NV4-S9-WQ0">
-                                                    <rect key="frame" x="8" y="0.0" width="28" height="28.333333333333332"/>
+                                                    <rect key="frame" x="8" y="0.0" width="28" height="27.666666666666668"/>
                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                     <state key="normal" image="circle" catalog="system">
                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="24"/>
@@ -862,7 +862,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mZA-oj-clv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="biz-sD-Rdw" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4033" y="-1187"/>
+            <point key="canvasLocation" x="4627" y="-1180"/>
         </scene>
         <!--Genre-->
         <scene sceneID="thR-tv-eis">
@@ -900,7 +900,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LFE-vV-A3v" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4876" y="-1187"/>
+            <point key="canvasLocation" x="5369" y="-1187"/>
         </scene>
         <!--My Shelf-->
         <scene sceneID="5SB-km-qdL">
@@ -940,14 +940,14 @@
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="postCell" id="3ub-35-MTk" customClass="MyShelfTableViewCell" customModule="BookDiary" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="94" width="393" height="55.333332061767578"/>
+                                <rect key="frame" x="0.0" y="94" width="393" height="55"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3ub-35-MTk" id="Vqh-Up-kta">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="55.333332061767578"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="55"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c3u-2r-uTr">
-                                            <rect key="frame" x="10" y="10" width="28" height="35.333333333333336"/>
+                                            <rect key="frame" x="10" y="10" width="28" height="35"/>
                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                             <state key="normal" image="circle" catalog="system">
                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="24"/>
@@ -960,13 +960,13 @@
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cJU-Kr-DlH">
-                                            <rect key="frame" x="48" y="10" width="315" height="35.333333333333336"/>
+                                            <rect key="frame" x="48" y="10" width="315" height="35"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4kr-eA-G29" userLabel="Web Search Button">
-                                            <rect key="frame" x="363" y="10" width="20" height="35.333333333333336"/>
+                                            <rect key="frame" x="363" y="10" width="20" height="35"/>
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="plain" image="globe" catalog="system"/>
                                             <connections>
@@ -1012,7 +1012,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zgb-wQ-B3y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3159.5419847328244" y="-1187.323943661972"/>
+            <point key="canvasLocation" x="3883" y="-1180"/>
         </scene>
         <!--Setting-->
         <scene sceneID="a7f-6X-nZz">
@@ -1373,11 +1373,11 @@
             </objects>
             <point key="canvasLocation" x="2234.3511450381679" y="-1187.323943661972"/>
         </scene>
-        <!--Item-->
+        <!--Search-->
         <scene sceneID="dCH-rv-LVe">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Mx1-1l-KPr" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="k1P-gh-qvx"/>
+                    <tabBarItem key="tabBarItem" title="Search" image="magnifyingglass" catalog="system" id="k1P-gh-qvx"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Lqp-lS-O5b">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -1950,7 +1950,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xfe-0y-03k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3125.9541984732823" y="-537.32394366197184"/>
+            <point key="canvasLocation" x="4795" y="-523"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="yW5-NC-21u">
@@ -1969,7 +1969,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Nf-lP-5xr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3125.9541984732823" y="-1187.323943661972"/>
+            <point key="canvasLocation" x="3126" y="-1195"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
@@ -1985,6 +1985,7 @@
         <image name="globe" catalog="system" width="128" height="123"/>
         <image name="line.horizontal.3" catalog="system" width="128" height="65"/>
         <image name="list.dash" catalog="system" width="128" height="85"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <image name="minus" catalog="system" width="128" height="26"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="square" catalog="system" width="128" height="114"/>
