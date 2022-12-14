@@ -30,7 +30,21 @@ public enum Browsers: String, CaseIterable, Codable {
   case Google = "https://www.google.com/search?q="
   case Amazon = "https://www.amazon.ca/s?k="
   
-  var description: String {
-    return "\(self)"
+  public static func getInstance(name: String) -> Browsers {
+    switch name {
+    case "\(Browsers.Google)":
+      return Browsers.Google
+    case "\(Browsers.Amazon)":
+      return Browsers.Amazon
+    default:
+      return Browsers.Google
+    }
   }
+}
+
+/// This is used for filter the list.
+/// Example:
+///   if you type Completion.complete, then will get "complete" of String,
+public enum Completion: String, CaseIterable, Codable {
+  case complete, incomplete
 }
