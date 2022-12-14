@@ -1209,26 +1209,32 @@
                             <tableViewSection headerTitle="ACCOUNT" id="Uax-D6-0DA">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Seg-hj-uIc">
-                                        <rect key="frame" x="0.0" y="50" width="393" height="75"/>
+                                        <rect key="frame" x="0.0" y="55.333332061767578" width="393" height="42.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Seg-hj-uIc" id="nMg-dC-DrH">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="75"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="42.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="isO-aN-skn">
-                                                    <rect key="frame" x="20" y="20" width="353" height="35"/>
-                                                    <state key="normal" title="Button"/>
-                                                    <buttonConfiguration key="configuration" style="plain" title="Detail"/>
-                                                    <connections>
-                                                        <segue destination="iZw-Os-rKR" kind="show" id="oOP-LV-yoL"/>
-                                                    </connections>
-                                                </button>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="yp6-R5-ZSk">
+                                                    <rect key="frame" x="20" y="11.000000000000002" width="353" height="20.666666666666671"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GaB-s0-A79">
+                                                            <rect key="frame" x="0.0" y="0.0" width="111" height="20.666666666666668"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="0HV-er-QvB">
+                                                            <rect key="frame" x="340.33333333333331" y="2" width="12.666666666666686" height="17"/>
+                                                        </imageView>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="CnU-Zv-3e5" firstAttribute="leading" secondItem="nMg-dC-DrH" secondAttribute="leadingMargin" id="5q0-GS-lRc"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="CnU-Zv-3e5" secondAttribute="bottom" id="Epq-Iz-ZGv"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="CnU-Zv-3e5" secondAttribute="trailing" id="Mxh-Do-LTm"/>
-                                                <constraint firstItem="CnU-Zv-3e5" firstAttribute="top" secondItem="nMg-dC-DrH" secondAttribute="topMargin" id="uZ1-fD-rQv"/>
+                                                <constraint firstItem="yp6-R5-ZSk" firstAttribute="top" secondItem="nMg-dC-DrH" secondAttribute="topMargin" id="1nm-6V-ICs"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="yp6-R5-ZSk" secondAttribute="bottom" id="Ab3-nd-R5K"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="yp6-R5-ZSk" secondAttribute="trailing" id="Lg8-sB-CMl"/>
+                                                <constraint firstItem="yp6-R5-ZSk" firstAttribute="leading" secondItem="nMg-dC-DrH" secondAttribute="leadingMargin" id="lSl-Ix-XYi"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -1240,16 +1246,18 @@
                             <tableViewSection headerTitle="BROWSE" id="fmn-kW-eGh">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="zIx-io-k5M">
-                                        <rect key="frame" x="0.0" y="203" width="393" height="74.666664123535156"/>
+                                        <rect key="frame" x="0.0" y="153.99999809265137" width="393" height="55.333332061767578"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zIx-io-k5M" id="elr-RQ-zA0">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="74.666664123535156"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zIx-io-k5M" id="elr-RQ-zA0">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="55.333332061767578"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9eD-hl-v23">
-                                                    <rect key="frame" x="20" y="19.999999999999996" width="353" height="34.666666666666657"/>
-                                                    <state key="normal" title="Button"/>
-                                                    <buttonConfiguration key="configuration" style="plain" image="chevron.right.square" catalog="system"/>
+                                                <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IHq-wa-TWA">
+                                                    <rect key="frame" x="20" y="11" width="353" height="33.333333333333336"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <state key="normal" title="Button">
+                                                        <color key="titleColor" systemColor="labelColor"/>
+                                                    </state>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -1297,7 +1305,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Setting" largeTitleDisplayMode="always" id="WYC-f8-Thz"/>
                     <connections>
-                        <outlet property="browserButton" destination="IHq-wa-TWA" id="goi-3o-cpz"/>
+                        <outlet property="browserButton" destination="IHq-wa-TWA" id="v6v-TC-zty"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fth-UQ-yb9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1566,11 +1574,11 @@
             </objects>
             <point key="canvasLocation" x="2223.6641221374043" y="-536.61971830985919"/>
         </scene>
-        <!--Item-->
+        <!--Settings-->
         <scene sceneID="wso-zD-wsF">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hmz-dv-vb5" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="CYE-HN-YvV"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="gear" catalog="system" id="CYE-HN-YvV"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="4pl-Zh-2ba">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -1779,25 +1787,24 @@
                                 <constraint firstAttribute="bottom" secondItem="ozI-H8-xMl" secondAttribute="bottom" constant="8" id="hcI-pN-fQJ"/>
                             </constraints>
                         </view>
-                        <sections>
-                            <tableViewSection id="t5c-3H-sUa">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="1Vt-Lj-9sv">
-                                        <rect key="frame" x="0.0" y="94" width="393" height="28.333333969116211"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1Vt-Lj-9sv" id="DJP-5Z-dwg">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="28.333333969116211"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchCell" id="1Vt-Lj-9sv" customClass="SearchTableViewCell" customModule="BookDiary" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="94" width="393" height="34.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1Vt-Lj-9sv" id="DJP-5Z-dwg">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="34.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="Ifr-eM-JfK">
+                                            <rect key="frame" x="16" y="0.0" width="361" height="34.666666666666664"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="igm-li-1lq">
-                                                    <rect key="frame" x="8" y="0.0" width="28" height="28.333333333333332"/>
-                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                    <state key="normal" image="circle" catalog="system">
-                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="24"/>
-                                                    </state>
-                                                    <state key="selected" image="checkmark.circle.fill" catalog="system">
-                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="24"/>
-                                                    </state>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dkV-ML-QeF">
+                                                    <rect key="frame" x="0.0" y="0.0" width="52.666666666666664" height="34.666666666666664"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" title="title"/>
+                                                    <connections>
+                                                        <action selector="titleButtonTapped:" destination="6CX-TM-tn8" eventType="touchUpInside" id="9zN-0D-ESn"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Mc-9A-esK">
                                                     <rect key="frame" x="153.33333333333334" y="0.0" width="57.333333333333343" height="34.666666666666664"/>
@@ -2148,8 +2155,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="uMM-8O-ghW"/>
         <segue reference="Ol6-fH-VKs"/>
+        <segue reference="uMM-8O-ghW"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="books.vertical" catalog="system" width="128" height="107"/>
@@ -2158,6 +2165,7 @@
         <image name="chevron.right" catalog="system" width="97" height="128"/>
         <image name="chevron.right.square" catalog="system" width="128" height="114"/>
         <image name="circle" catalog="system" width="128" height="123"/>
+        <image name="gear" catalog="system" width="128" height="122"/>
         <image name="globe" catalog="system" width="128" height="123"/>
         <image name="line.horizontal.3" catalog="system" width="128" height="65"/>
         <image name="list.dash" catalog="system" width="128" height="85"/>

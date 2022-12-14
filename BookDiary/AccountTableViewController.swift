@@ -89,7 +89,7 @@ class AccountTableViewController: UITableViewController {
     if passwordTextField.text! == passwordConfirmTextField.text! {
       return true
     } else {
-      let alertController = UIAlertController(title: "This email is already used by someone.", message: nil, preferredStyle: .alert)
+      let alertController = UIAlertController(title: "2 passwords are different. Write same password.", message: nil, preferredStyle: .alert)
       let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
       alertController.addAction(cancelAction)
       present(alertController, animated: true)
