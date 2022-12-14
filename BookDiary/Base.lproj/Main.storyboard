@@ -1027,6 +1027,33 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection id="BRb-mt-2ze">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="zgG-3R-u0S">
+                                        <rect key="frame" x="0.0" y="245.33333015441895" width="393" height="34.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zgG-3R-u0S" id="3NG-Cd-mtr">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="34.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9HG-ld-4x9">
+                                                    <rect key="frame" x="155.66666666666666" y="0.0" width="81.666666666666657" height="34.666666666666664"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="filled" title="Log out"/>
+                                                    <connections>
+                                                        <action selector="logOutButtonTapped:" destination="nzo-fb-tgq" eventType="touchUpInside" id="Sfi-gN-Kh2"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="9HG-ld-4x9" firstAttribute="centerX" secondItem="3NG-Cd-mtr" secondAttribute="centerX" id="UXv-hs-P1P"/>
+                                                <constraint firstItem="9HG-ld-4x9" firstAttribute="top" secondItem="3NG-Cd-mtr" secondAttribute="top" id="jOt-zN-IYq"/>
+                                                <constraint firstAttribute="bottom" secondItem="9HG-ld-4x9" secondAttribute="bottom" id="sS4-Ru-RxD"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="nzo-fb-tgq" id="Ul7-A8-7Kr"/>

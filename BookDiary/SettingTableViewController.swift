@@ -11,9 +11,6 @@ class SettingTableViewController: UITableViewController {
   
   var user: User?
   
-//  let accountDetailIndexPath = IndexPath(row: 0, section: 0)
-//  let browseDetailIndexPath = IndexPath(row: 0, section: 1)
-  
   @IBOutlet var browserButton: UIButton!
   
   override func viewDidLoad() {
@@ -58,5 +55,12 @@ class SettingTableViewController: UITableViewController {
     atvc?.user = self.user
     
     return atvc
+  }
+  
+  @IBAction func logOutButtonTapped(_ sender: UIButton) {
+    let loginNavigationController = storyboard!.instantiateViewController(withIdentifier: "LoginNavigationController")
+    User.currentUser = nil
+    
+    (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(loginNavigationController)
   }
 }
