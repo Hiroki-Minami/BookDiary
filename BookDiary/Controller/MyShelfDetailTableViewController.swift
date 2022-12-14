@@ -59,10 +59,10 @@ class MyShelfDetailTableViewController: UITableViewController, RatingViewDelegat
   func updateSaveButtonState() {
     let notYet = "Not Yet"
     let shouldEnableSaveButton =
-      (titleTextField.text?.isEmpty == false) &&
-      (AutherTextField.text?.isEmpty == false) &&
-      (genreLabel.text?.isEmpty == false) &&
-      !notYet.contains(genreLabel.text!)
+    (titleTextField.text?.isEmpty == false) &&
+    (AutherTextField.text?.isEmpty == false) &&
+    (genreLabel.text?.isEmpty == false) &&
+    !notYet.contains(genreLabel.text!)
     saveButton.isEnabled = shouldEnableSaveButton
   }
   

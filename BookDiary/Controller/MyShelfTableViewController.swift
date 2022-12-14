@@ -7,16 +7,16 @@
 
 import UIKit
 
-class MyShelfTableViewController: UITableViewController, MyShelfCellDelegate {
-    
+class MyShelfTableViewController: UITableViewController, MyShelfCellDelegate, RatingAlertViewControllerDelegate {
+  
   var posts = [Post]()
   var otherPosts = [Post]()
+  var ratingView: Float?
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
     navigationItem.leftBarButtonItem = editButtonItem
-
     if let savedPosts = Post.loadPosts() {
       posts = savedPosts
     } else {
@@ -72,53 +72,41 @@ class MyShelfTableViewController: UITableViewController, MyShelfCellDelegate {
     if let indexPath = tableView.indexPath(for: sender) {
       var post = posts[indexPath.row]
       post.isComplete.toggle()
-      if post.isComplete {
-        post.rates = ratingBookAlert()
-      }
       posts[indexPath.row] = post
       tableView.reloadRows(at: [indexPath], with: .automatic)
       Post.savePosts(posts+otherPosts)
+      if post.isComplete {
+        showAlertController(indexPath: indexPath)
+      }
     }
   }
   
-  func ratingBookAlert () -> Float {
-    let alertController = UIAlertController(title: "Rate The Book", message: "Tap the star to rate it.", preferredStyle: .alert)
-    
-    let starRatingViewContainer = UIView()
-    let starRatingView = StarRatingView()
-    starRatingViewContainer.addSubview(starRatingView)
-    alertController.view.addSubview(starRatingViewContainer)
-    
-    alertController.view.translatesAutoresizingMaskIntoConstraints = false
-    alertController.view.heightAnchor.constraint(equalToConstant: 200).isActive = true
-    
-    starRatingViewContainer.translatesAutoresizingMaskIntoConstraints = false
-    starRatingViewContainer.topAnchor.constraint(equalTo: alertController.view.topAnchor, constant: 40).isActive = true
-    starRatingViewContainer.rightAnchor.constraint(equalTo: alertController.view.rightAnchor, constant: -15).isActive = true
-    starRatingViewContainer.leftAnchor.constraint(equalTo: alertController.view.leftAnchor, constant: 15).isActive = true
-    starRatingViewContainer.bottomAnchor.constraint(equalTo: alertController.view.bottomAnchor, constant: -40).isActive = true
-    
-    starRatingView.translatesAutoresizingMaskIntoConstraints = false
-    starRatingView.topAnchor.constraint(equalTo: starRatingViewContainer.topAnchor, constant: 0).isActive = true
-    starRatingView.rightAnchor.constraint(equalTo: starRatingViewContainer.rightAnchor, constant: 0).isActive = true
-    starRatingView.leftAnchor.constraint(equalTo: starRatingViewContainer.leftAnchor, constant: 0).isActive = true
-    starRatingView.bottomAnchor.constraint(equalTo: starRatingViewContainer.bottomAnchor, constant: 0).isActive = true
-    
-    let okAction = UIAlertAction(title: "Done", style: .default) { [unowned alertController] _ in
-//      let phone = alertController.textFields?[0].text
-//      print(phone)
+  func showAlertController(indexPath: IndexPath) {
+    var post = posts[indexPath.row]
+    let alertView = UIAlertController(title: "Rate The Book", message: "Tap the star to rate it.", preferredStyle: .alert )
+    alertView.setViewController(title: "Rate The Book", message: "Tap the star to rate it.", ratingValue: post.rates!, delegate: self)
+    alertView.addAlertAction(title: "Cancel") { (_) in
+      post.isComplete.toggle()
+      self.posts[indexPath.row] = post
+      self.tableView.reloadRows(at: [indexPath], with: .automatic)
+      Post.savePosts(self.posts+self.otherPosts)
     }
-    alertController.addAction(okAction)
-    let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-    alertController.addAction(cancelAction)
-    present(alertController, animated: true)
-    return 3.0
+    alertView.addAlertAction(title: "Done") { (_) in
+      post.rates = self.ratingView
+      self.posts[indexPath.row] = post
+      self.tableView.reloadRows(at: [indexPath], with: .automatic)
+      Post.savePosts(self.posts+self.otherPosts)
+    }
+    present(alertView, animated: true, completion: nil)
+  }
+  
+  func updateRatingFormatValue(_ value: Float) {
+    ratingView = value
   }
   
   // MARK: - Table view data source
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    // #warning Incomplete implementation, return the number of rows
     return posts.count
   }
   
