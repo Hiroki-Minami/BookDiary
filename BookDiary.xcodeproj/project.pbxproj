@@ -15,10 +15,10 @@
 		60A1749629413D7800490E55 /* Settiing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A1749529413D7800490E55 /* Settiing.swift */; };
 		60A1749929414F0100490E55 /* FileManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A1749829414F0100490E55 /* FileManager+Extensions.swift */; };
 		9405128D2943D1E00016A950 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9405128C2943D1E00016A950 /* ForgotPasswordViewController.swift */; };
-		9412A44A29427AC700F3EB45 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9412A44929427AC700F3EB45 /* LogInViewController.swift */; };
-		9412A44C29427E8600F3EB45 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9412A44B29427E8600F3EB45 /* SignUpViewController.swift */; };
 		9405128F294422030016A950 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9405128E294422030016A950 /* SettingTableViewController.swift */; };
 		94051293294451060016A950 /* AccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94051292294451060016A950 /* AccountTableViewController.swift */; };
+		9412A44A29427AC700F3EB45 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9412A44929427AC700F3EB45 /* LogInViewController.swift */; };
+		9412A44C29427E8600F3EB45 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9412A44B29427E8600F3EB45 /* SignUpViewController.swift */; };
 		941868DA2940024600974DEE /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941868D92940024600974DEE /* SearchTableViewController.swift */; };
 		941868DC2940043700974DEE /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941868DB2940043700974DEE /* SearchTableViewCell.swift */; };
 		941868E02940492300974DEE /* SearchFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941868DF2940492300974DEE /* SearchFilterViewController.swift */; };
@@ -39,10 +39,10 @@
 		60A1749529413D7800490E55 /* Settiing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settiing.swift; sourceTree = "<group>"; };
 		60A1749829414F0100490E55 /* FileManager+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extensions.swift"; sourceTree = "<group>"; };
 		9405128C2943D1E00016A950 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
-		9412A44929427AC700F3EB45 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
-		9412A44B29427E8600F3EB45 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		9405128E294422030016A950 /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
 		94051292294451060016A950 /* AccountTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewController.swift; sourceTree = "<group>"; };
+		9412A44929427AC700F3EB45 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		9412A44B29427E8600F3EB45 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		941868D92940024600974DEE /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		941868DB2940043700974DEE /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		941868DF2940492300974DEE /* SearchFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFilterViewController.swift; sourceTree = "<group>"; };
@@ -369,8 +369,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -397,8 +396,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
