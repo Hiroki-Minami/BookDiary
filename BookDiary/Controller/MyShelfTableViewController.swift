@@ -7,11 +7,19 @@
 
 import UIKit
 
-class MyShelfTableViewController: UITableViewController, MyShelfCellDelegate, RatingAlertViewControllerDelegate {
+class MyShelfTableViewController: UITableViewController, MyShelfCellDelegate, RatingAlertViewControllerDelegate, UISearchBarDelegate, UISearchDisplayDelegate {
   
   var posts = [Post]()
+  var shownPosts = [Post]()
   var otherPosts = [Post]()
   var ratingView: Float?
+  
+  // filters
+  var genreIsShown: [Genres: Bool] = [:]
+  var completionIsShown: [Completion: Bool] = [:]
+  var rateFilter = 0
+  
+  @IBOutlet var searchBar: UISearchBar!
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -23,8 +31,27 @@ class MyShelfTableViewController: UITableViewController, MyShelfCellDelegate, Ra
       posts = Post.loadSamplePosts()
       Post.savePosts(posts)
     }
-    otherPosts = posts.filter{ post in post.poster.nickName != "Quien" }
-    posts = posts.filter{ post in post.poster.nickName == "Quien" }
+    otherPosts = posts.filter{ post in
+      if let nickName = post.poster.nickName {
+        return nickName != User.currentUser?.nickName
+      } else {
+        return post.poster.firstName != User.currentUser?.firstName
+      }
+    }
+    posts = posts.filter{ post in
+      if let nickName = post.poster.nickName {
+        return nickName == User.currentUser?.nickName
+      } else {
+        return post.poster.firstName == User.currentUser?.firstName
+      }
+    }
+    for genre in Genres.allCases {
+      genreIsShown[genre] = true
+    }
+    for completion in Completion.allCases {
+      completionIsShown[completion] = true
+    }
+    updateUI()
   }
   
   @IBSegueAction func editPost(_ coder: NSCoder, sender: Any?) -> MyShelfDetailTableViewController? {
@@ -37,6 +64,57 @@ class MyShelfTableViewController: UITableViewController, MyShelfCellDelegate, Ra
     return detailController
   }
   
+  func updateUI() {
+    filteringBooks()
+    tableView.reloadData()
+  }
+  
+  func filteringBooks() {
+    shownPosts = posts.filter({
+      let genres = genreIsShown.filter { $1 == true }
+      let isDone = $0.isComplete
+      let flg = isDone ? completionIsShown[.complete]!: completionIsShown[.incomplete]!
+      let postsGenre = $0.genres
+      
+      if let postsRate = $0.rates {
+        return genres.keys.contains(postsGenre) && flg && postsRate >= Float(rateFilter)
+      } else {
+        return genres.keys.contains(postsGenre) && flg
+      }
+    })
+    
+    shownPosts = shownPosts.filter({
+      guard !searchBar.text!.isEmpty else {
+        return true
+      }
+      if let nickName = $0.poster.nickName {
+        return $0.title.lowercased().contains(searchBar.text!.lowercased()) || nickName.lowercased().contains(searchBar.text!.lowercased())
+      }
+      return $0.title.lowercased().contains(searchBar.text!.lowercased()) || $0.poster.firstName.lowercased().contains(searchBar.text!.lowercased())
+    })
+  }
+  
+  @IBSegueAction func toSearchFilter(_ coder: NSCoder, sender: Any?) -> SearchFilterViewController? {
+    let sfvc = SearchFilterViewController(coder: coder)
+    sfvc?.genreIsShown = genreIsShown
+    sfvc?.completionIsShown = completionIsShown
+    sfvc?.rate = Float(rateFilter)
+    return sfvc
+  }
+  
+  func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    updateUI()
+  }
+  
+  @IBAction func unwindToMyShelfFromSearchFilter(segue: UIStoryboardSegue) {
+    guard segue.identifier == "saveFilterMyShelf" else { return }
+    let sourceViewController = segue.source as! SearchFilterViewController
+    
+    self.genreIsShown = sourceViewController.genreIsShown
+    self.completionIsShown = sourceViewController.completionIsShown
+    rateFilter = Int(round(sourceViewController.rate))
+    updateUI()
+  }
   
   @IBAction func unwindToPost(segue: UIStoryboardSegue) {
     guard segue.identifier == "saveUnwind" else { return }
@@ -49,7 +127,9 @@ class MyShelfTableViewController: UITableViewController, MyShelfCellDelegate, Ra
       } else {
         let newIndexPath = IndexPath(row: posts.count, section: 0)
         posts.append(post)
+        shownPosts.append(post)
         tableView.insertRows(at: [newIndexPath], with: .automatic)
+        tableView.reloadData()
       }
     }
     Post.savePosts(posts+otherPosts)
@@ -105,12 +185,12 @@ class MyShelfTableViewController: UITableViewController, MyShelfCellDelegate, Ra
   // MARK: - Table view data source
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return posts.count
+    return shownPosts.count
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as! MyShelfTableViewCell
-    let post = posts[indexPath.row]
+    let post = shownPosts[indexPath.row]
     cell.dekegate = self
     cell.isCompleteButton.isSelected = post.isComplete
     cell.titleLabel.text = post.title
@@ -120,6 +200,7 @@ class MyShelfTableViewController: UITableViewController, MyShelfCellDelegate, Ra
   override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
     if editingStyle == .delete {
       posts.remove(at: indexPath.row)
+      shownPosts.remove(at: indexPath.row)
       tableView.deleteRows(at: [indexPath], with: .automatic)
       Post.savePosts(posts+otherPosts)
     }

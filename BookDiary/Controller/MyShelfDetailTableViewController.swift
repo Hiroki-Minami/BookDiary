@@ -114,7 +114,7 @@ class MyShelfDetailTableViewController: UITableViewController, UITextFieldDelega
         post?.review = review
         post?.genres = genre!
       } else {
-        post = Post(title: title, author: auther, rates: rates, genres: Genres(rawValue: genre!.rawValue)!, review: review, postedDate: Date(), poster: Poster(firstName: "Quien", nickName: "Quien"))
+        post = Post(title: title, author: auther, rates: rates, genres: Genres(rawValue: genre!.rawValue)!, review: review, postedDate: Date(), poster: Poster(firstName: User.currentUser!.firstName, nickName: User.currentUser!.nickName))
       }
     } else if segue.identifier == "selectGenre" {
       let destinationViewController = segue.destination as? GenreListTableViewController
