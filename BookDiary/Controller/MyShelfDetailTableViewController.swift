@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MyShelfDetailTableViewController: UITableViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, RatingViewDelegate, GenreListDelegate {
+class MyShelfDetailTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, RatingViewDelegate, GenreListDelegate {
   
   @IBOutlet weak var titleTextField: UITextField!
   @IBOutlet weak var autherTextField: UITextField!
@@ -32,10 +32,6 @@ class MyShelfDetailTableViewController: UITableViewController, UITextFieldDelega
     updateView()
     updateSaveButtonState()
     setEndEditing()
-  }
-  
-  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-    view.endEditing(true)
   }
   
   // MARK: -
@@ -116,12 +112,6 @@ class MyShelfDetailTableViewController: UITableViewController, UITextFieldDelega
     titleTextField.resignFirstResponder()
     autherTextField.resignFirstResponder()
     return true
-  }
-  
-  func setEndEditing() {
-    let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
-    tap.cancelsTouchesInView = false
-    view.addGestureRecognizer(tap)
   }
   
   // MARK: - Delegate

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MyShelfTableViewController: UITableViewController, MyShelfCellDelegate, RatingAlertViewControllerDelegate, UISearchBarDelegate, UISearchDisplayDelegate {
+class MyShelfTableViewController: UITableViewController, UISearchBarDelegate, UISearchDisplayDelegate, MyShelfCellDelegate, RatingAlertViewControllerDelegate {
   
   var posts = [Post]()
   var shownPosts = [Post]()
@@ -24,6 +24,7 @@ class MyShelfTableViewController: UITableViewController, MyShelfCellDelegate, Ra
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    searchBar.delegate = self
     navigationItem.leftBarButtonItem = editButtonItem
     if let savedPosts = Post.loadPosts() {
       posts = savedPosts
@@ -52,6 +53,7 @@ class MyShelfTableViewController: UITableViewController, MyShelfCellDelegate, Ra
       completionIsShown[completion] = true
     }
     updateUI()
+    setEndEditing()
   }
   
   @IBSegueAction func editPost(_ coder: NSCoder, sender: Any?) -> MyShelfDetailTableViewController? {

@@ -21,6 +21,8 @@ class SearchTableViewController: UITableViewController, searchTableViewCellDeleg
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    searchBar.delegate = self
     // getting default filter setting
     for genre in Genres.allCases {
       genreIsShown[genre] = true
@@ -30,6 +32,7 @@ class SearchTableViewController: UITableViewController, searchTableViewCellDeleg
     }
     allPosts = Post.loadSamplePosts()
     updateUI()
+    setEndEditing()
   }
   
   func updateUI() {
