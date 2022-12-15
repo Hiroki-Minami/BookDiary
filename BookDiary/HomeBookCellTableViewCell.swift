@@ -12,6 +12,7 @@ class HomeBookCellTableViewCell: UITableViewCell {
   
   @IBOutlet var titleButton: UIButton!
   @IBOutlet var userButton: UIButton!
+  @IBOutlet var starRatingView: StarRatingView!
   
   var delegate: HomeTableViewControllerDelegate?
   var post: Post?
@@ -31,6 +32,9 @@ class HomeBookCellTableViewCell: UITableViewCell {
     delegate?.titleButtonTapped(self)
   }
   
+  @IBAction func userButtonTapped(_ sender: Any) {
+    delegate?.userButtonTapped(self)
+  }
   
 }
 

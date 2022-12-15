@@ -8,7 +8,7 @@
 import UIKit
 
 class SearchTableViewController: UITableViewController, searchTableViewCellDelegate, UISearchBarDelegate, UISearchDisplayDelegate {
-  
+
   var allPosts: [Post] = []
   var shownPosts: [Post] = []
   
@@ -55,15 +55,14 @@ class SearchTableViewController: UITableViewController, searchTableViewCellDeleg
       guard !searchBar.text!.isEmpty else {
         return true
       }
-      return $0.title.lowercased().contains(searchBar.text!.lowercased()) || $0.author.lowercased().contains(searchBar.text!.lowercased())
+      if let nickName = $0.poster.nickName {
+        return $0.title.lowercased().contains(searchBar.text!.lowercased()) || nickName.lowercased().contains(searchBar.text!.lowercased())
+      }
+      return $0.title.lowercased().contains(searchBar.text!.lowercased()) || $0.poster.firstName.lowercased().contains(searchBar.text!.lowercased())
     })
   }
   
   func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-    print(searchText)
-    print(searchBar.text!)
-    print(searchText.isEmpty)
-    print(searchBar.text!.isEmpty)
     updateUI()
   }
   
@@ -93,8 +92,31 @@ class SearchTableViewController: UITableViewController, searchTableViewCellDeleg
     cell.delegate = self
     cell.post = shownPosts[indexPath.row]
     cell.titleButton.setTitle(shownPosts[indexPath.row].title, for: .normal)
-    cell.userButton.setTitle(shownPosts[indexPath.row].author, for: .normal)
+    if let nickName = shownPosts[indexPath.row].poster.nickName {
+      cell.userButton.setTitle(nickName, for: .normal)
+    } else {
+      cell.userButton.setTitle(shownPosts[indexPath.row].poster.firstName, for: .normal)
+    }
     return cell
+  }
+  
+  func titleButtonTapped(_ sender: Any) {
+    performSegue(withIdentifier: "searchToEachbook", sender: sender)
+  }
+  
+  func userButtonTapped(_ sender: Any) {
+    performSegue(withIdentifier: "searchToUserDetail", sender: sender)
+  }
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    guard let post = sender as? Post else { return }
+    if segue.identifier == "searchToEachbook" {
+      let eachBookView = segue.destination as! EachBookViewController
+      eachBookView.eachBook = post
+    } else if segue.identifier == "searchToUserDetail" {
+      let userdetailView = segue.destination as! UserTableViewController
+      userdetailView.poster = post.poster
+    }
   }
   
   @IBSegueAction func goToSearchFilterViewController(_ coder: NSCoder) -> SearchFilterViewController? {
@@ -102,6 +124,7 @@ class SearchTableViewController: UITableViewController, searchTableViewCellDeleg
     sfvc?.genreIsShown = genreIsShown
     sfvc?.completionIsShown = completionIsShown
     sfvc?.rate = Float(rateFilter)
+    sfvc?.sourceController = self
     return sfvc
   }
   

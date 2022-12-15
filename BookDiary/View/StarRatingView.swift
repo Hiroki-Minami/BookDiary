@@ -17,6 +17,7 @@ class StarRatingView: UIView {
   // MARK: - Properties
   var imageViewList = [UIImageView]()
   var delegate: RatingViewDelegate!
+  var changeable: Bool = true
   
   @IBInspectable
   var maxCount: Float = 5.0 {
@@ -106,6 +107,7 @@ class StarRatingView: UIView {
   
   // MARK: - UITouch Delegate
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    guard changeable else { return }
     if let touch = touches.first {
       let currentPoint = touch.location(in: self)
       updateViewAppearance(Float(currentPoint.x))
@@ -113,6 +115,7 @@ class StarRatingView: UIView {
   }
   
   override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+    guard changeable else { return }
     if let touch = touches.first {
       let currentPoint = touch.location(in: self)
       updateViewAppearance(Float(currentPoint.x))
@@ -120,6 +123,7 @@ class StarRatingView: UIView {
   }
   
   override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+    guard changeable else { return }
     if let touch = touches.first {
       let currentPoint = touch.location(in: self)
       updateViewAppearance(Float(currentPoint.x))

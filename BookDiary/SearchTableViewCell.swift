@@ -10,6 +10,8 @@ import SafariServices
 
 protocol searchTableViewCellDelegate: AnyObject {
   func searchOnTheInternet(_ viewControllerToPresent: UIViewController)
+  func titleButtonTapped(_ sender: Any)
+  func userButtonTapped(_ sender: Any)
 }
 
 class SearchTableViewCell: UITableViewCell {
@@ -32,12 +34,12 @@ class SearchTableViewCell: UITableViewCell {
   }
   
   @IBAction func titleButtonTapped(_ sender: UIButton) {
-    // TODO: navigate to each book page
+    delegate?.titleButtonTapped(post!)
   }
   
   
   @IBAction func userButtonTapped(_ sender: UIButton) {
-    // TODO: navigate to user detail
+    delegate?.userButtonTapped(post!)
   }
   
   @IBAction func webSearchButtonTapped(_ sender: UIButton) {

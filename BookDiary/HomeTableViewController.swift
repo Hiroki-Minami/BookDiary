@@ -9,6 +9,7 @@ import UIKit
 
 protocol HomeTableViewControllerDelegate {
   func titleButtonTapped(_ sender: Any)
+  func userButtonTapped(_ sender: Any)
 }
 
 class HomeTableViewController: UITableViewController, HomeTableViewControllerDelegate {
@@ -18,12 +19,7 @@ class HomeTableViewController: UITableViewController, HomeTableViewControllerDel
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    if let savedBooks = Post.loadPosts() {
-      bookCell = savedBooks
-    } else {
-      bookCell = Post.loadSamplePosts()
-    }
+    bookCell = Post.loadSamplePosts()
     
   }
   
@@ -34,11 +30,17 @@ class HomeTableViewController: UITableViewController, HomeTableViewControllerDel
   
   // path the date
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCellIdentifier", for: indexPath) as! HomeBookCellTableViewCell
+    let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCell", for: indexPath) as! HomeBookCellTableViewCell
     let book = bookCell[indexPath.row]
     cell.titleButton?.setTitle("\(book.title)", for: .normal)
-    cell.userButton?.setTitle("\(book.poster)", for: .normal)
+    if let nickName = book.poster.nickName {
+      cell.userButton?.setTitle("\(nickName)", for: .normal)
+    } else {
+      cell.userButton?.setTitle("\(book.poster.firstName)", for: .normal)
+    }
     cell.post = book
+    cell.starRatingView.ratingValue = book.rates ?? 0.0
+    cell.starRatingView.changeable = false
     cell.delegate = self
     
     return cell
@@ -52,10 +54,21 @@ class HomeTableViewController: UITableViewController, HomeTableViewControllerDel
     performSegue(withIdentifier: "toEachBook", sender: self)
   }
   
+  func userButtonTapped(_ sender: Any) {
+    guard let cell = sender as? HomeBookCellTableViewCell, let indexPath = tableView.indexPath(for: cell) else { return }
+    tappedPost = cell.post
+    
+    tableView.deselectRow(at: indexPath, animated: true)
+    performSegue(withIdentifier: "toUserDetail", sender: self)
+  }
+  
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if (segue.identifier == "toEachBook") {
+    if segue.identifier == "toEachBook" {
       let eachBookView = segue.destination as! EachBookViewController
       eachBookView.eachBook = tappedPost
+    } else if segue.identifier == "toUserDetail" {
+      let userdetailView = segue.destination as! UserTableViewController
+      userdetailView.poster = tappedPost?.poster
     }
   }
   //  func titleButtonTapped(sender: HomeBookCellTableViewCell) {

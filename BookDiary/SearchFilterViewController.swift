@@ -25,6 +25,8 @@ class SearchFilterViewController: UIViewController {
   @IBOutlet var rateSlider: UISlider!
   var rate: Float = 0
   
+  var sourceController: Any?
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -113,9 +115,12 @@ class SearchFilterViewController: UIViewController {
   @IBAction func rateSliderValueChanged(_ sender: UISlider) {
     rate = sender.value
   }
-  
-  
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    guard segue.identifier == "saveFilter" else { return }
+  @IBAction func doneButtonTapped(_ sender: UIBarButtonItem) {
+    if sourceController is SearchTableViewController {
+      performSegue(withIdentifier: "saveFilter", sender: self)
+    } else if sourceController is MyShelfTableViewController {
+      performSegue(withIdentifier: "saveFilterToMyShelf", sender: self)
+    }
   }
+  
 }

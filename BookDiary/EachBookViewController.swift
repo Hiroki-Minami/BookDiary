@@ -14,33 +14,32 @@ class EachBookViewController: UIViewController {
   @IBOutlet var genreLabel: UILabel!
   @IBOutlet var image: UIImageView!
   @IBOutlet var userButton: UIButton!
+  @IBOutlet var notesTextView: UITextView!
+  
+  @IBOutlet var starRatingView: StarRatingView!
   
   var eachBook: Post?
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    navigationItem.title = eachBook?.title
     authorLabel.text = eachBook?.author
-//    genreLabel.text = eachBook?.genres
-    
+    genreLabel.text = "\(eachBook!.genres)"
+    userButton.setTitle(eachBook!.poster.nickName, for: .normal)
+    notesTextView.text = eachBook?.review
+    starRatingView.ratingValue = eachBook?.rates ?? 0
+    starRatingView.changeable = false
   }
   
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "eachBookToUserDetail" {
+      let userDetail = segue.destination as! UserTableViewController
+      userDetail.poster = eachBook?.poster
+    }
+  }
   
 }
-    
-    
-    
-//    guard segue.identifier == "toEachBook" else {return}
-    
-//    let author = authorLabel.text!
-//    let genreLabel = genreLabel.text!
-
-//    if eachBook != nil {
-//      if let eachBook = eachBook {
-//        authorLabel.text = eachBook.author
-//      }
-//    }
-//  }
   
     
 
