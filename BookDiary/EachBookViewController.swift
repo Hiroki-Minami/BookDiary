@@ -26,7 +26,7 @@ class EachBookViewController: UIViewController {
     navigationItem.title = eachBook?.title
     authorLabel.text = eachBook?.author
     genreLabel.text = "\(eachBook!.genres)"
-    userButton.setTitle(eachBook!.poster.nickName, for: .normal)
+    userButton.setTitle(eachBook!.poster.nickName != nil ? eachBook!.poster.nickName : eachBook!.poster.firstName, for: .normal)
     notesTextView.text = eachBook?.review
     starRatingView.ratingValue = eachBook?.rates ?? 0
     starRatingView.changeable = false
