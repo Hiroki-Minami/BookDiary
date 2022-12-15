@@ -91,7 +91,10 @@ class MyShelfDetailTableViewController: UITableViewController, UIImagePickerCont
       reviewTextView.text = post.review!
       genreLabel.text = post.genres.rawValue
       genre = post.genres
-      bookImageView.image = Post.loadImage(imageName: post.img)
+      if let image = Post.loadImage(imageName: post.img) {
+        uploadImageButton.setTitle("Edit Image", for: .normal)
+        bookImageView.image = image
+      }
     }
     genreCountLabel.text = String(Genres.allCases.count)
   }
