@@ -123,4 +123,13 @@ class SearchFilterViewController: UIViewController {
     }
   }
   
+  @IBAction func cancelButtonTapped(_ sender: UIBarButtonItem) {
+    if sourceController is SearchTableViewController {
+      performSegue(withIdentifier: "cancelFilter", sender: nil)
+    } else if sourceController is MyShelfTableViewController {
+      performSegue(withIdentifier: "cancelFilterToMyShelf", sender: nil)
+    }
+  }
+  
+  
 }

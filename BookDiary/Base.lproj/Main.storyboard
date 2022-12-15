@@ -1892,7 +1892,11 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Search Filter" id="pdq-eq-EmY">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="JSU-7o-bem"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="JSU-7o-bem">
+                            <connections>
+                                <action selector="cancelButtonTapped:" destination="0xp-di-j9v" id="Apj-dD-9de"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="dEG-WR-bg6">
                             <connections>
                                 <action selector="doneButtonTapped:" destination="0xp-di-j9v" id="76E-Mj-HQO"/>
@@ -1911,6 +1915,8 @@
                         <outlet property="rateSlider" destination="pdp-H6-HS7" id="w3s-vm-dvN"/>
                         <segue destination="OXV-lA-2OR" kind="unwind" identifier="saveFilterToMyShelf" unwindAction="unwindToMyShelfFromSearchFilterWithSegue:" id="y5D-da-um7"/>
                         <segue destination="OXV-lA-2OR" kind="unwind" identifier="saveFilter" unwindAction="unwindToSearchTableViewWithSegue:" id="bKI-eN-EJ6"/>
+                        <segue destination="OXV-lA-2OR" kind="unwind" identifier="cancelFilterToMyShelf" unwindAction="unwindToMyShelfCanceledFilterWithSegue:" id="Lqd-a3-WFC"/>
+                        <segue destination="OXV-lA-2OR" kind="unwind" identifier="cancelFilter" unwindAction="unwindToSearchCanceledWithSegue:" id="eHh-cI-lol"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8xI-S3-W5n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
