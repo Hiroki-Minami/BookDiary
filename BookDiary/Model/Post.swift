@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct Post: Equatable, Codable {
   var id: UUID
@@ -44,6 +45,18 @@ struct Post: Equatable, Codable {
     guard let codedPosts = try? Data(contentsOf: archiveURL) else { return nil }
     let propertyListDecoder = PropertyListDecoder()
     return try? propertyListDecoder.decode(Array<Post>.self, from: codedPosts)
+  }
+  
+  static func loadImage(imageName: String?) -> UIImage? {
+    if let img = imageName {
+      if let imageData = try? Data(contentsOf: FileManager.pathToImagesDirectory(with: img)) {
+        return UIImage(data: imageData)
+      } else {
+        return nil
+      }
+    } else {
+      return nil
+    }
   }
   
   /// save all Posts info in file

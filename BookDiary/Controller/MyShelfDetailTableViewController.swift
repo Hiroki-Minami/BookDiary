@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MyShelfDetailTableViewController: UITableViewController, UITextFieldDelegate, RatingViewDelegate, GenreListDelegate {
+class MyShelfDetailTableViewController: UITableViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, RatingViewDelegate, GenreListDelegate {
   
   @IBOutlet weak var titleTextField: UITextField!
   @IBOutlet weak var autherTextField: UITextField!
@@ -16,6 +16,8 @@ class MyShelfDetailTableViewController: UITableViewController, UITextFieldDelega
   @IBOutlet weak var genreLabel: UILabel!
   @IBOutlet weak var genreCountLabel: UILabel!
   @IBOutlet weak var saveButton: UIBarButtonItem!
+  @IBOutlet weak var bookImageView: UIImageView!
+  @IBOutlet weak var uploadImageButton: UIButton!
   
   var post: Post?
   var rates: Float = 0.0
@@ -36,6 +38,8 @@ class MyShelfDetailTableViewController: UITableViewController, UITextFieldDelega
     view.endEditing(true)
   }
   
+  // MARK: -
+  
   @IBSegueAction func selectGenre(_ coder: NSCoder, sender: Any?) -> GenreListTableViewController? {
     let detailController = GenreListTableViewController(coder: coder)
     detailController?.genre = Genres(rawValue: genreLabel.text!)
@@ -50,6 +54,38 @@ class MyShelfDetailTableViewController: UITableViewController, UITextFieldDelega
     updateSaveButtonState()
   }
   
+  @IBAction func uploadImageButtonTapped(_ sender: UIButton) {
+    let imagePickerController = UIImagePickerController()
+    imagePickerController.delegate = self
+    present(imagePickerController, animated: true, completion: nil)
+  }
+  
+  // MARK: - Image
+  
+  func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    
+    guard let pickedImage = info[.originalImage] as? UIImage else {
+        return
+    }
+    bookImageView.contentMode = .scaleAspectFit
+    bookImageView.image = pickedImage
+    uploadImageButton.setTitle("Edit Image", for: .normal)
+    dismiss(animated: true, completion: nil)
+  }
+  
+  func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+    dismiss(animated: true, completion: nil)
+  }
+  
+  func saveImage(with imageName: String) {
+    let imagePath = FileManager.pathToImagesDirectory(with: imageName)
+    if let jpegData = bookImageView.image!.jpegData(compressionQuality: 1.0) {
+        try? jpegData.write(to: imagePath)
+    }
+  }
+  
+  // MARK: -
+  
   func updateView() {
     if let post = post {
       navigationItem.title = "Edit Post"
@@ -59,6 +95,7 @@ class MyShelfDetailTableViewController: UITableViewController, UITextFieldDelega
       reviewTextView.text = post.review!
       genreLabel.text = post.genres.rawValue
       genre = post.genres
+      bookImageView.image = Post.loadImage(imageName: post.img)
     }
     genreCountLabel.text = String(Genres.allCases.count)
   }
@@ -86,7 +123,7 @@ class MyShelfDetailTableViewController: UITableViewController, UITextFieldDelega
     tap.cancelsTouchesInView = false
     view.addGestureRecognizer(tap)
   }
-
+  
   // MARK: - Delegate
   
   func updateRatingFormatValue(_ value: Float) {
@@ -106,15 +143,19 @@ class MyShelfDetailTableViewController: UITableViewController, UITextFieldDelega
       let title = titleTextField.text!
       let auther = autherTextField.text!
       let review = reviewTextView.text
-      
+      let img = bookImageView.image != nil ? UUID().uuidString : nil
       if post != nil {
         post?.title = title
+        post?.img = img
         post?.author = auther
         post?.rates = rates
         post?.review = review
         post?.genres = genre!
       } else {
-        post = Post(title: title, author: auther, rates: rates, genres: Genres(rawValue: genre!.rawValue)!, review: review, postedDate: Date(), poster: Poster(firstName: User.currentUser!.firstName, nickName: User.currentUser!.nickName))
+        post = Post(title: title, img: img, author: auther, rates: rates, genres: Genres(rawValue: genre!.rawValue)!, review: review, postedDate: Date(), poster: Poster(firstName: User.currentUser!.firstName, nickName: User.currentUser!.nickName))
+      }
+      if let img = img {
+        saveImage(with: img)
       }
     } else if segue.identifier == "selectGenre" {
       let destinationViewController = segue.destination as? GenreListTableViewController
@@ -124,5 +165,5 @@ class MyShelfDetailTableViewController: UITableViewController, UITextFieldDelega
       return
     }
   }
-  
+    
 }
