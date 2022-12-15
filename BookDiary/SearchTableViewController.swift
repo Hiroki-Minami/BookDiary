@@ -124,6 +124,7 @@ class SearchTableViewController: UITableViewController, searchTableViewCellDeleg
     sfvc?.genreIsShown = genreIsShown
     sfvc?.completionIsShown = completionIsShown
     sfvc?.rate = Float(rateFilter)
+    sfvc?.sourceController = self
     return sfvc
   }
   

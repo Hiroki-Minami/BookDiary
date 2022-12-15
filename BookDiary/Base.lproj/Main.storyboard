@@ -820,7 +820,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="jfW-dM-6gJ">
+                                <searchBar contentMode="redraw" searchBarStyle="minimal" text="" placeholder="Title or author" translatesAutoresizingMaskIntoConstraints="NO" id="jfW-dM-6gJ">
                                     <rect key="frame" x="5" y="0.0" width="337" height="44"/>
                                     <textInputTraits key="textInputTraits"/>
                                     <connections>
@@ -849,14 +849,14 @@
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="postCell" id="3ub-35-MTk" customClass="MyShelfTableViewCell" customModule="BookDiary" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="94" width="393" height="54.666667938232422"/>
+                                <rect key="frame" x="0.0" y="94" width="393" height="55.333332061767578"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3ub-35-MTk" id="Vqh-Up-kta">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="54.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="55.333332061767578"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c3u-2r-uTr">
-                                            <rect key="frame" x="10" y="10" width="28" height="34.666666666666664"/>
+                                            <rect key="frame" x="10" y="10" width="28" height="35.333333333333336"/>
                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                             <state key="normal" image="circle" catalog="system">
                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="24"/>
@@ -869,13 +869,13 @@
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cJU-Kr-DlH">
-                                            <rect key="frame" x="48" y="10" width="315" height="34.666666666666664"/>
+                                            <rect key="frame" x="48" y="10" width="315" height="35.333333333333336"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4kr-eA-G29" userLabel="Web Search Button">
-                                            <rect key="frame" x="363" y="10" width="20" height="34.666666666666664"/>
+                                            <rect key="frame" x="363" y="10" width="20" height="35.333333333333336"/>
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="plain" image="globe" catalog="system"/>
                                             <connections>
@@ -1877,7 +1877,7 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="JSU-7o-bem"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="dEG-WR-bg6">
                             <connections>
-                                <segue destination="OXV-lA-2OR" kind="unwind" identifier="saveFilter" unwindAction="unwindToSearchTableViewWithSegue:" id="4HL-Lf-5eR"/>
+                                <action selector="doneButtonTapped:" destination="0xp-di-j9v" id="76E-Mj-HQO"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1892,6 +1892,7 @@
                         <outlet property="rateCollapseButton" destination="gSW-Bd-bPY" id="agU-13-edo"/>
                         <outlet property="rateSlider" destination="pdp-H6-HS7" id="w3s-vm-dvN"/>
                         <segue destination="OXV-lA-2OR" kind="unwind" identifier="saveFilterToMyShelf" unwindAction="unwindToMyShelfFromSearchFilterWithSegue:" id="y5D-da-um7"/>
+                        <segue destination="OXV-lA-2OR" kind="unwind" identifier="saveFilter" unwindAction="unwindToSearchTableViewWithSegue:" id="bKI-eN-EJ6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8xI-S3-W5n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1963,7 +1964,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="Ol6-fH-VKs"/>
-        <segue reference="UIe-er-UPV"/>
+        <segue reference="Q5b-QM-88V"/>
         <segue reference="ffd-1c-55d"/>
         <segue reference="UeN-Ba-aq5"/>
     </inferredMetricsTieBreakers>

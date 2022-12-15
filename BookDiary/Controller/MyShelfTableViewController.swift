@@ -60,7 +60,7 @@ class MyShelfTableViewController: UITableViewController, MyShelfCellDelegate, Ra
       return detailController
     }
     tableView.deselectRow(at: indexPath, animated: true)
-    detailController?.post = posts[indexPath.row]
+    detailController?.post = shownPosts[indexPath.row]
     return detailController
   }
   
@@ -87,10 +87,7 @@ class MyShelfTableViewController: UITableViewController, MyShelfCellDelegate, Ra
       guard !searchBar.text!.isEmpty else {
         return true
       }
-      if let nickName = $0.poster.nickName {
-        return $0.title.lowercased().contains(searchBar.text!.lowercased()) || nickName.lowercased().contains(searchBar.text!.lowercased())
-      }
-      return $0.title.lowercased().contains(searchBar.text!.lowercased()) || $0.poster.firstName.lowercased().contains(searchBar.text!.lowercased())
+      return $0.title.lowercased().contains(searchBar.text!.lowercased()) || $0.author.lowercased().contains(searchBar.text!.lowercased())
     })
   }
   
@@ -99,6 +96,7 @@ class MyShelfTableViewController: UITableViewController, MyShelfCellDelegate, Ra
     sfvc?.genreIsShown = genreIsShown
     sfvc?.completionIsShown = completionIsShown
     sfvc?.rate = Float(rateFilter)
+    sfvc?.sourceController = self
     return sfvc
   }
   
@@ -107,7 +105,7 @@ class MyShelfTableViewController: UITableViewController, MyShelfCellDelegate, Ra
   }
   
   @IBAction func unwindToMyShelfFromSearchFilter(segue: UIStoryboardSegue) {
-    guard segue.identifier == "saveFilterMyShelf" else { return }
+    guard segue.identifier == "saveFilterToMyShelf" else { return }
     let sourceViewController = segue.source as! SearchFilterViewController
     
     self.genreIsShown = sourceViewController.genreIsShown
@@ -121,9 +119,12 @@ class MyShelfTableViewController: UITableViewController, MyShelfCellDelegate, Ra
     let sourceViewContoller = segue.source as! MyShelfDetailTableViewController
     
     if let post = sourceViewContoller.post {
-      if let indexOfExistingTodo = posts.firstIndex(of: post) {
-        posts[indexOfExistingTodo] = post
+      if let indexOfExistingTodo = shownPosts.firstIndex(of: post) {
+        shownPosts[indexOfExistingTodo] = post
         tableView.reloadRows(at: [IndexPath(row: indexOfExistingTodo, section: 0)], with: .automatic)
+        if let indexOfExistingTodoWholePosts = self.posts.firstIndex(of: post) {
+          self.posts[indexOfExistingTodoWholePosts] = post
+        }
       } else {
         let newIndexPath = IndexPath(row: posts.count, section: 0)
         posts.append(post)
@@ -138,8 +139,8 @@ class MyShelfTableViewController: UITableViewController, MyShelfCellDelegate, Ra
   // MARK: -
   func webSearchButtonTapped(sender: MyShelfTableViewCell) {
     if let indexPath = tableView.indexPath(for: sender) {
-      let post = posts[indexPath.row]
-      let url = Setting.browser.rawValue + post.title
+      let post = shownPosts[indexPath.row]
+      let url = (User.currentUser?.userSetting.browser.rawValue)! + post.title
       if let url = URL(string: url) {
         UIApplication.shared.open(url)
       }
@@ -148,10 +149,13 @@ class MyShelfTableViewController: UITableViewController, MyShelfCellDelegate, Ra
   
   func checkmarkTapped(sender: MyShelfTableViewCell) {
     if let indexPath = tableView.indexPath(for: sender) {
-      var post = posts[indexPath.row]
+      var post = shownPosts[indexPath.row]
       post.isComplete.toggle()
-      posts[indexPath.row] = post
+      shownPosts[indexPath.row] = post
       tableView.reloadRows(at: [indexPath], with: .automatic)
+      if let indexOfExistingTodo = self.posts.firstIndex(of: post) {
+        self.posts[indexOfExistingTodo] = post
+      }
       Post.savePosts(posts+otherPosts)
       if post.isComplete {
         showAlertController(indexPath: indexPath)
@@ -160,19 +164,26 @@ class MyShelfTableViewController: UITableViewController, MyShelfCellDelegate, Ra
   }
   
   func showAlertController(indexPath: IndexPath) {
-    var post = posts[indexPath.row]
+    var post = shownPosts[indexPath.row]
+    
     let alertView = UIAlertController(title: "Rate The Book", message: "Tap the star to rate it.", preferredStyle: .alert )
     alertView.setViewController(title: "Rate The Book", message: "Tap the star to rate it.", ratingValue: post.rates!, delegate: self)
     alertView.addAlertAction(title: "Cancel") { (_) in
       post.isComplete.toggle()
-      self.posts[indexPath.row] = post
+      self.shownPosts[indexPath.row] = post
       self.tableView.reloadRows(at: [indexPath], with: .automatic)
+      if let indexOfExistingTodo = self.posts.firstIndex(of: post) {
+        self.posts[indexOfExistingTodo] = post
+      }
       Post.savePosts(self.posts+self.otherPosts)
     }
     alertView.addAlertAction(title: "Done") { (_) in
       post.rates = self.ratingView
-      self.posts[indexPath.row] = post
+      self.shownPosts[indexPath.row] = post
       self.tableView.reloadRows(at: [indexPath], with: .automatic)
+      if let indexOfExistingTodo = self.posts.firstIndex(of: post) {
+        self.posts[indexOfExistingTodo] = post
+      }
       Post.savePosts(self.posts+self.otherPosts)
     }
     present(alertView, animated: true, completion: nil)
@@ -199,8 +210,10 @@ class MyShelfTableViewController: UITableViewController, MyShelfCellDelegate, Ra
   
   override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
     if editingStyle == .delete {
-      posts.remove(at: indexPath.row)
-      shownPosts.remove(at: indexPath.row)
+      let deletedPost = shownPosts.remove(at: indexPath.row)
+      if let indexOfExistingTodo = posts.firstIndex(of: deletedPost) {
+        posts.remove(at: indexOfExistingTodo)
+      }
       tableView.deleteRows(at: [indexPath], with: .automatic)
       Post.savePosts(posts+otherPosts)
     }
