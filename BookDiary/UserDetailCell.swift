@@ -6,12 +6,20 @@
 //
 
 import UIKit
+import SafariServices
+
+protocol UserDetailCellDelegate: AnyObject {
+  func searchOnTheInternet(_ viewControllerToPresent: UIViewController)
+}
 
 class UserDetailCell: UITableViewCell {
+  
+  weak var delegate: UserDetailCellDelegate?
   
   @IBOutlet var titleLabel: UILabel!
   @IBOutlet var authorLabel: UILabel!
   
+  var post: Post?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,5 +31,12 @@ class UserDetailCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+  
+  @IBAction func webSearchButtonTapped(_ sender: UIButton) {
+    // TODO: get user setting
+    guard let title = titleLabel.text, let url = URL(string: User.currentUser!.userSetting.browser.rawValue + title) else { return }
+    let safariController = SFSafariViewController(url: url)
+    delegate?.searchOnTheInternet(safariController)
+  }
 
 }

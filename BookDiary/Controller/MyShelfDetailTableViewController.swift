@@ -152,7 +152,7 @@ class MyShelfDetailTableViewController: UITableViewController, UITextFieldDelega
         post?.review = review
         post?.genres = genre!
       } else {
-        post = Post(title: title, img: img, author: auther, rates: rates, genres: Genres(rawValue: genre!.rawValue)!, review: review, postedDate: Date(), poster: Poster(firstName: "Quien", nickName: "Quien"))
+        post = Post(title: title, img: img, author: auther, rates: rates, genres: Genres(rawValue: genre!.rawValue)!, review: review, postedDate: Date(), poster: Poster(firstName: User.currentUser!.firstName, nickName: User.currentUser!.nickName))
       }
       if let img = img {
         saveImage(with: img)
