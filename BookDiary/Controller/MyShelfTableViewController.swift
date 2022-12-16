@@ -126,7 +126,7 @@ class MyShelfTableViewController: UITableViewController, MyShelfCellDelegate, Ra
           self.posts[indexOfExistingTodoWholePosts] = post
         }
       } else {
-        let newIndexPath = IndexPath(row: posts.count, section: 0)
+        let newIndexPath = IndexPath(row: shownPosts.count, section: 0)
         posts.append(post)
         shownPosts.append(post)
         tableView.insertRows(at: [newIndexPath], with: .automatic)
