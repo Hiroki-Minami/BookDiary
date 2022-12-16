@@ -23,6 +23,7 @@ class ForgotPasswordViewController: UIViewController {
     // Do any additional setup after loading the view.
     alertTextView.isHidden = false
     updateDoneButtonState()
+    setEndEditing()
   }
   
   func updateDoneButtonState() {
@@ -78,6 +79,12 @@ class ForgotPasswordViewController: UIViewController {
     }
     User.saveUsers(users)
     return true
+  }
+  
+  func setEndEditing() {
+    let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+    tap.cancelsTouchesInView = false
+    view.addGestureRecognizer(tap)
   }
   
 }
