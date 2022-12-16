@@ -23,7 +23,6 @@ class HomeTableViewController: UITableViewController, HomeTableViewControllerDel
       bookCell = savedPosts
     } else {
       bookCell = Post.loadSamplePosts()
-      Post.savePosts(bookCell)
     }
     bookCell = bookCell.filter{ post in
       if let nickName = post.poster.nickName {
