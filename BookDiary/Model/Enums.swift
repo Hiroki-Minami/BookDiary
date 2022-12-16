@@ -19,7 +19,7 @@ public enum Language: String, CaseIterable, Codable {
 /// Example:
 ///   if you type Genres.Art.rawValue, then will get "Art" of String,
 public enum Genres: String, CaseIterable, Codable {
-  case Art, Business, Fantasy, History, Horror, Psychology, Romance, Science
+  case Art, Business, Fantasy, History, Horror, Psychology, Romance, Science, Fiction
 }
 
 /// Kind of browser in Setting

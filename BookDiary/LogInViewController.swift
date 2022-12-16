@@ -45,7 +45,7 @@ class LogInViewController: UIViewController {
       alertTextView.text = "Create your account at first."
       return false }
     for user in users {
-      let email = emailTextField.text!
+      let email = emailTextField.text!.lowercased()
       let password = passwordTextField.text!
       if user.email == email && user.passWord == password {
         self.user = user

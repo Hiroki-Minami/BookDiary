@@ -12,7 +12,7 @@ class EachBookViewController: UIViewController {
   
   @IBOutlet var authorLabel: UILabel!
   @IBOutlet var genreLabel: UILabel!
-  @IBOutlet var image: UIImageView!
+  @IBOutlet var imageView: UIImageView!
   @IBOutlet var userButton: UIButton!
   @IBOutlet var notesTextView: UITextView!
   
@@ -24,9 +24,10 @@ class EachBookViewController: UIViewController {
     super.viewDidLoad()
     
     navigationItem.title = eachBook?.title
+    imageView.image = Post.loadImage(imageName: eachBook?.img)
     authorLabel.text = eachBook?.author
     genreLabel.text = "\(eachBook!.genres)"
-    userButton.setTitle(eachBook!.poster.nickName, for: .normal)
+    userButton.setTitle(eachBook!.poster.nickName != nil ? eachBook!.poster.nickName : eachBook!.poster.firstName, for: .normal)
     notesTextView.text = eachBook?.review
     starRatingView.ratingValue = eachBook?.rates ?? 0
     starRatingView.changeable = false

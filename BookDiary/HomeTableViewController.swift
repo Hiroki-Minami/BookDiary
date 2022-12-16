@@ -19,8 +19,19 @@ class HomeTableViewController: UITableViewController, HomeTableViewControllerDel
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    bookCell = Post.loadSamplePosts()
-    
+    if let savedPosts = Post.loadPosts() {
+      bookCell = savedPosts
+    } else {
+      bookCell = Post.loadSamplePosts()
+      Post.savePosts(bookCell)
+    }
+    bookCell = bookCell.filter{ post in
+      if let nickName = post.poster.nickName {
+        return nickName != User.currentUser?.nickName && post.isComplete
+      } else {
+        return post.poster.firstName != User.currentUser?.firstName  && post.isComplete
+      }
+    }
   }
   
   // The number of cells that are displayed at home screen
@@ -71,30 +82,6 @@ class HomeTableViewController: UITableViewController, HomeTableViewControllerDel
       userdetailView.poster = tappedPost?.poster
     }
   }
-  //  func titleButtonTapped(sender: HomeBookCellTableViewCell) {
-  //    print(#function)
-  //    if let indexPath = tableView.indexPath(for: sender) {
-  //      var book = bookCell[indexPath.row]
-  //      bookCell[indexPath.row] = book
-  //      tableView.reloadRows(at: [indexPath], with: .automatic)
-  //    }
-  //  }
-  
-  //  @IBAction func toEachBook(segue: UIStoryboardSegue) {
-  //    guard segue.identifier == "toEachBook" else {return}
-  //    let souceViewCntroller = segue.source as! EachBookViewController
-  //  }
-  //
-  //  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-  //    if segue.identifier == "toEachBook" {
-  //      if let indexPath = tableView.indexPathForSelectedRow {
-  //        guard let destination = segue.destination as? EachBookViewController else {return}
-  //        destination.eachBook = bookCell[indexPath.row]
-  //      }
-  //
-  //    }
-  //  }
-  //
 }
 
 

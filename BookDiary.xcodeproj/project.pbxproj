@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6008BCEE294BDEDE00ABFA35 /* UITableViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6008BCED294BDEDE00ABFA35 /* UITableViewController+Extensions.swift */; };
 		600924F7294542EC005D1F56 /* GenreListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600924F6294542EC005D1F56 /* GenreListTableViewController.swift */; };
 		60092503294878C7005D1F56 /* UIAlertController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60092502294878C7005D1F56 /* UIAlertController+Extensions.swift */; };
 		6009250529491F90005D1F56 /* RatingAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009250429491F90005D1F56 /* RatingAlertViewController.swift */; };
@@ -43,6 +44,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6008BCED294BDEDE00ABFA35 /* UITableViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewController+Extensions.swift"; sourceTree = "<group>"; };
 		600924F6294542EC005D1F56 /* GenreListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreListTableViewController.swift; sourceTree = "<group>"; };
 		60092502294878C7005D1F56 /* UIAlertController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extensions.swift"; sourceTree = "<group>"; };
 		6009250429491F90005D1F56 /* RatingAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingAlertViewController.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 			children = (
 				60A1749829414F0100490E55 /* FileManager+Extensions.swift */,
 				60092502294878C7005D1F56 /* UIAlertController+Extensions.swift */,
+				6008BCED294BDEDE00ABFA35 /* UITableViewController+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 				94770667293AC9D700CFA877 /* SceneDelegate.swift in Sources */,
 				9412A44A29427AC700F3EB45 /* LogInViewController.swift in Sources */,
 				941868DA2940024600974DEE /* SearchTableViewController.swift in Sources */,
+				6008BCEE294BDEDE00ABFA35 /* UITableViewController+Extensions.swift in Sources */,
 				941868E02940492300974DEE /* SearchFilterViewController.swift in Sources */,
 				941868DC2940043700974DEE /* SearchTableViewCell.swift in Sources */,
 				60A1749929414F0100490E55 /* FileManager+Extensions.swift in Sources */,

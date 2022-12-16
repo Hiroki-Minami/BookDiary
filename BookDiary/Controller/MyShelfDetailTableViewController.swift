@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MyShelfDetailTableViewController: UITableViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, RatingViewDelegate, GenreListDelegate {
+class MyShelfDetailTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, RatingViewDelegate, GenreListDelegate {
   
   @IBOutlet weak var titleTextField: UITextField!
   @IBOutlet weak var autherTextField: UITextField!
@@ -32,10 +32,6 @@ class MyShelfDetailTableViewController: UITableViewController, UITextFieldDelega
     updateView()
     updateSaveButtonState()
     setEndEditing()
-  }
-  
-  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-    view.endEditing(true)
   }
   
   // MARK: -
@@ -95,7 +91,10 @@ class MyShelfDetailTableViewController: UITableViewController, UITextFieldDelega
       reviewTextView.text = post.review!
       genreLabel.text = post.genres.rawValue
       genre = post.genres
-      bookImageView.image = Post.loadImage(imageName: post.img)
+      if let image = Post.loadImage(imageName: post.img) {
+        uploadImageButton.setTitle("Edit Image", for: .normal)
+        bookImageView.image = image
+      }
     }
     genreCountLabel.text = String(Genres.allCases.count)
   }
@@ -116,12 +115,6 @@ class MyShelfDetailTableViewController: UITableViewController, UITextFieldDelega
     titleTextField.resignFirstResponder()
     autherTextField.resignFirstResponder()
     return true
-  }
-  
-  func setEndEditing() {
-    let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
-    tap.cancelsTouchesInView = false
-    view.addGestureRecognizer(tap)
   }
   
   // MARK: - Delegate
