@@ -34,7 +34,7 @@ class UserDetailCell: UITableViewCell {
   
   @IBAction func webSearchButtonTapped(_ sender: UIButton) {
     // TODO: get user setting
-    guard let title = titleLabel.text, let url = URL(string: User.currentUser!.userSetting.browser.rawValue + title) else { return }
+    guard let title = titleLabel.text, let url = URL(string: User.currentUser!.userSetting.browser.rawValue + title.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!) else { return }
     let safariController = SFSafariViewController(url: url)
     delegate?.searchOnTheInternet(safariController)
   }
