@@ -24,6 +24,7 @@ class LogInViewController: UIViewController {
     // TODO: if there is data on local file this step will be skipped and navigate to home
     updateLogInButtonState()
     alertTextView.isHidden = false
+    setEndEditing()
   }
   
   func updateLogInButtonState() {
@@ -79,4 +80,11 @@ class LogInViewController: UIViewController {
     }
     updateLogInButtonState()
   }
+  
+  func setEndEditing() {
+    let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+    tap.cancelsTouchesInView = false
+    view.addGestureRecognizer(tap)
+  }
+  
 }

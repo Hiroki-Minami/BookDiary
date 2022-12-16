@@ -26,6 +26,7 @@ class SignUpViewController: UIViewController {
     // Do any additional setup after loading the view.
     alertTextView.isHidden = false
     updateDoneButtonState()
+    setEndEditing()
   }
   
   @IBAction func textFieldEditingChanged(_ sender: UITextField) {
@@ -77,4 +78,11 @@ class SignUpViewController: UIViewController {
     }
     return true
   }
+  
+  func setEndEditing() {
+    let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+    tap.cancelsTouchesInView = false
+    view.addGestureRecognizer(tap)
+  }
+  
 }
