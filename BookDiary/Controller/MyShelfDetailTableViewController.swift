@@ -23,6 +23,7 @@ class MyShelfDetailTableViewController: UITableViewController, UIImagePickerCont
   var rates: Float = 0.0
   var language: Language?
   var genre: Genres?
+  var imageName: String? = nil
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -75,7 +76,7 @@ class MyShelfDetailTableViewController: UITableViewController, UIImagePickerCont
   
   func saveImage(with imageName: String) {
     let imagePath = FileManager.pathToImagesDirectory(with: imageName)
-    if let jpegData = bookImageView.image!.jpegData(compressionQuality: 1.0) {
+    if let jpegData = bookImageView.image?.jpegData(compressionQuality: 1.0) {
         try? jpegData.write(to: imagePath)
     }
   }
@@ -94,6 +95,7 @@ class MyShelfDetailTableViewController: UITableViewController, UIImagePickerCont
       if let image = Post.loadImage(imageName: post.img) {
         uploadImageButton.setTitle("Edit Image", for: .normal)
         bookImageView.image = image
+        imageName = post.img!
       }
     }
     genreCountLabel.text = String(Genres.allCases.count)
@@ -136,7 +138,10 @@ class MyShelfDetailTableViewController: UITableViewController, UIImagePickerCont
       let title = titleTextField.text!
       let auther = autherTextField.text!
       let review = reviewTextView.text
-      let img = bookImageView.image != nil ? UUID().uuidString : nil
+      var img = ""
+      if bookImageView.image != nil {
+        img = imageName ?? UUID().uuidString
+      }
       if post != nil {
         post?.title = title
         post?.img = img
@@ -147,7 +152,7 @@ class MyShelfDetailTableViewController: UITableViewController, UIImagePickerCont
       } else {
         post = Post(title: title, img: img, author: auther, rates: rates, genres: Genres(rawValue: genre!.rawValue)!, review: review, postedDate: Date(), poster: Poster(firstName: User.currentUser!.firstName, nickName: User.currentUser!.nickName))
       }
-      if let img = img {
+      if bookImageView.image != nil {
         saveImage(with: img)
       }
     } else if segue.identifier == "selectGenre" {
