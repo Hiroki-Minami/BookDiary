@@ -73,10 +73,12 @@ class LogInViewController: UIViewController {
     if let sourceViewController = segue.source as? SignUpViewController {
       emailTextField.text = sourceViewController.emailTextField.text
       passwordTextField.text = sourceViewController.passwordTextField.text
+      alertTextView.text = ""
     } else {
       let sourceViewController = segue.source as! ForgotPasswordViewController
       emailTextField.text = sourceViewController.emailTextField.text
       passwordTextField.text = sourceViewController.passwordTextField.text
+      alertTextView.text = ""
     }
     updateLogInButtonState()
   }
