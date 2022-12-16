@@ -88,7 +88,7 @@ class MyShelfDetailTableViewController: UITableViewController, UIImagePickerCont
       titleTextField.text = post.title
       autherTextField.text = post.author
       ratesView.ratingValue = post.rates!
-      reviewTextView.text = post.review!
+      reviewTextView.text = post.review ?? ""
       genreLabel.text = post.genres.rawValue
       genre = post.genres
       if let image = Post.loadImage(imageName: post.img) {
