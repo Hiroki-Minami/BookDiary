@@ -19,7 +19,12 @@ class UserTableViewController: UITableViewController, UserDetailCellDelegate {
     } else {
       navigationItem.title = (poster?.firstName)! + "'s posts"
     }
-    posts = Post.loadSamplePosts().filter({
+    if let savedPosts = Post.loadPosts() {
+      posts = savedPosts
+    } else {
+      posts = Post.loadSamplePosts()
+    }
+    posts = posts.filter({
       guard let nickName = $0.poster.nickName else {
         return $0.poster.firstName == self.poster?.firstName
       }
