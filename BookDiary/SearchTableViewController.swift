@@ -67,13 +67,15 @@ class SearchTableViewController: UITableViewController, searchTableViewCellDeleg
   }
   
   @IBAction func unwindToSearchTableView(segue: UIStoryboardSegue) {
-    guard segue.identifier == "saveFilter" else { return }
-    let sourceViewController = segue.source as! SearchFilterViewController
+    guard segue.identifier == "saveFilter", let sourceViewController = segue.source as? SearchFilterViewController else { return }
     
     self.genreIsShown = sourceViewController.genreIsShown
     self.completionIsShown = sourceViewController.completionIsShown
     rateFilter = Int(round(sourceViewController.rate))
     updateUI()
+  }
+  
+  @IBAction func unwindToSearchCanceled(segue: UIStoryboardSegue) {
   }
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

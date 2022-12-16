@@ -105,13 +105,15 @@ class MyShelfTableViewController: UITableViewController, MyShelfCellDelegate, Ra
   }
   
   @IBAction func unwindToMyShelfFromSearchFilter(segue: UIStoryboardSegue) {
-    guard segue.identifier == "saveFilterToMyShelf" else { return }
-    let sourceViewController = segue.source as! SearchFilterViewController
+    guard segue.identifier == "saveFilterToMyShelf", let sourceViewController = segue.source as? SearchFilterViewController else { return }
     
     self.genreIsShown = sourceViewController.genreIsShown
     self.completionIsShown = sourceViewController.completionIsShown
     rateFilter = Int(round(sourceViewController.rate))
     updateUI()
+  }
+  
+  @IBAction func unwindToMyShelfCanceledFilter(segue: UIStoryboardSegue) {
   }
   
   @IBAction func unwindToPost(segue: UIStoryboardSegue) {
