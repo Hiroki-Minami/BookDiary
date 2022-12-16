@@ -39,6 +39,7 @@ class AccountTableViewController: UITableViewController {
         self.userIndex = index
       }
     }
+    setEndEditing()
   }
   
   func changeSaveButtonStatus() {
