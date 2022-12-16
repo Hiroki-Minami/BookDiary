@@ -19,7 +19,12 @@ class HomeTableViewController: UITableViewController, HomeTableViewControllerDel
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    bookCell = Post.loadSamplePosts()
+    if let savedPosts = Post.loadPosts() {
+      bookCell = savedPosts
+    } else {
+      bookCell = Post.loadSamplePosts()
+      Post.savePosts(bookCell)
+    }
     bookCell = bookCell.filter{ post in
       if let nickName = post.poster.nickName {
         return nickName != User.currentUser?.nickName && post.isComplete
